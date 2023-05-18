@@ -13,5 +13,12 @@
   },
   "posts/new-posts/index.qmd": {
     "index.html": "4c9db063"
+  },
+  "posts/Ordered Regression/index.qmd": {
+    "index.html": "cf4995b9",
+    "index.tex": "a0514e05"
+  },
+  "test_python.qmd": {
+    "test_python.html": "7abf7e11"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "hash": "6fe8e090f52bc701a621d34f5eb62798",
+  "result": {
+    "markdown": "---\ntitle: \"Ordered Regression and Other Models\"\nauthor: \"J. Branson Byers\"\ndate: \"2023-02-01\"\ncategories: [news, code, analysis]\ntoc: true\nnumber-sections: true\n\nformat: \n  html: \n    css: styles.css\n  pdf: \n    documentclass: report\n    margin-left: 30mm\n    margin-right: 30mm\n---\n\n\n::: panel-tabset\n\n## Element 1\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n```\n[1] 2\n```\n:::\n:::\n\n\n## Element 2\n\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": null,
+    "postProcess": false
+  }
+}

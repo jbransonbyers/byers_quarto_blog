@@ -1,0 +1,14 @@
+---
+title: "temp_python.ipynb"
+jupyter: python3
+---
+
+```{r}
+library(reticulate)
+
+py_config()
+```
+
+```{python}
+print('I am alive!!')
+```

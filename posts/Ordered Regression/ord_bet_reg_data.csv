@@ -1,0 +1,501 @@
+"","statement_id","participant","opposing_interval","statement_type","opposing_belief","change","confidence","importance","own_belief","divergence","belief_strength","disagree_extremity","importance_binarized","same_side","disagreement"
+"1","Faith > Science",15,3,"Important",0.75,0.25,0.78,0.53,0.13,0.62,0.37,0.32,"Important",FALSE,0.990211703140849
+"2","Phone vs. Text",51,2,"Trivial",0.61,0.74,0.76,0.5,0.64,0.03,0.14,0.22,"Unimportant",TRUE,0.216704467485004
+"3","Homosexual Parents",2,2,"Important",0.38,0.23,1,1,1,0.62,0.5,0.5,"Important",FALSE,0.729126985964003
+"4","Standardized Tests",55,1,"Trivial",0.33,0.2,0.55,0,0,0.33,0.5,0.3,"Unimportant",TRUE,1
+"5","Standardized Tests",40,2,"Trivial",0.34,0.78,0.58,0.39,0.89,0.55,0.39,0.07,"Unimportant",FALSE,0.720912752404199
+"6","Faith > Science",57,3,"Important",0.88,0,1,0,0,0.88,0.5,0.4,"Unimportant",FALSE,0.990983754248343
+"7","Homosexual Parents",38,2,"Important",0.42,0.21,0.93,0.9,0.93,0.51,0.43,0.3,"Important",FALSE,0.452626620838539
+"8","Standardized Tests",33,1,"Trivial",0,0.69,0.31,0.3,0.5,0.5,0,0.11,"Unimportant",FALSE,0.611863444628422
+"9","Homosexual Parents",10,2,"Important",0.58,0,1,0.39,1,0.42,0.5,0,"Unimportant",TRUE,0.418190264350928
+"10","Standardized Tests",39,2,"Trivial",0.61,0.64,0.5,0.44,0.5,0.11,0,0.04,"Unimportant",TRUE,0.29615916052415
+"11","Citizen > Immigrant",53,1,"Important",0.14,0.5,0.48,0.5,0.5,0.36,0,0,"Unimportant",FALSE,0.706822017472134
+"12","Citizen > Immigrant",35,2,"Important",0.52,1,0.6,0.7,0.8,0.28,0.3,0.3,"Important",TRUE,0.204023479496576
+"13","Homosexual Parents",42,3,"Important",0.88,0,1,1,1,0.12,0.5,0.34,"Important",TRUE,0.398716465265714
+"14","Homosexual Parents",31,3,"Important",0.97,0.4,0.96,0.89,0.91,0.06,0.41,0.47,"Important",TRUE,0.26692767839792
+"15","Standardized Tests",25,3,"Trivial",0.78,0.61,0.83,0.86,0.1,0.68,0.4,0.36,"Important",FALSE,0
+"16","Phone vs. Text",37,2,"Trivial",0.43,0.92,0.76,0.61,0.8,0.37,0.3,0.23,"Important",FALSE,0.484481238102899
+"17","Homosexual Parents",38,2,"Important",0.42,0.21,0.93,0.9,0.93,0.51,0.43,0.3,"Important",FALSE,0.870976195979173
+"18","Faith > Science",12,1,"Important",0.32,0.25,0.65,0.7,0.1,0.22,0.4,0.1,"Important",TRUE,0
+"19","Phone vs. Text",60,2,"Trivial",0.64,0.06,0.06,0.09,0.02,0.62,0.48,0.34,"Unimportant",FALSE,0.456677771849612
+"20","Citizen > Immigrant",9,1,"Important",0.28,0.41,0.85,0.76,0.7,0.42,0.2,0.5,"Important",FALSE,0.750605902047982
+"21","Phone vs. Text",7,2,"Trivial",0.58,0.03,1,0.6,0.81,0.23,0.31,0.13,"Important",TRUE,0.372945275587874
+"22","Homosexual Parents",2,3,"Important",0.93,0.23,1,1,1,0.07,0.5,0.48,"Important",TRUE,0.318342784702707
+"23","Pet Marijuana",50,3,"Trivial",0.99,0.51,0.65,0.14,0,0.99,0.5,0.48,"Unimportant",FALSE,0.815919066262549
+"24","Pet Marijuana",30,2,"Trivial",0.45,1,0,0,0.7,0.25,0.2,0.12,"Unimportant",FALSE,0.451099147603966
+"25","Homosexual Parents",29,2,"Important",0.4,0,1,1,1,0.6,0.5,0.5,"Important",FALSE,0.973228529716394
+"26","Pet Marijuana",43,2,"Trivial",0.49,1,0.69,0.29,0.1,0.39,0.4,0.01,"Unimportant",TRUE,0.0501448682612215
+"27","Homosexual Parents",14,2,"Important",0.42,0.15,1,0.9,1,0.58,0.5,0.5,"Important",FALSE,0.712200855196113
+"28","Citizen > Immigrant",58,1,"Important",0.11,0,0.95,0.02,0.21,0.1,0.29,0.36,"Unimportant",TRUE,0.577839176234133
+"29","Homosexual Parents",51,1,"Important",0.27,0,1,1,1,0.73,0.5,0.42,"Important",FALSE,1
+"30","Pet Marijuana",17,3,"Trivial",0.98,1,0,1,0,0.98,0.5,0.5,"Important",FALSE,1
+"31","Faith > Science",43,3,"Important",0.76,0.01,1,0.98,0,0.76,0.5,0.47,"Important",FALSE,1
+"32","Phone vs. Text",36,3,"Trivial",0.99,0.77,0.66,0.33,0.75,0.24,0.25,0.35,"Unimportant",TRUE,0.674514330859086
+"33","Phone vs. Text",37,3,"Trivial",0.92,0.92,0.76,0.61,0.8,0.12,0.3,0.24,"Important",TRUE,0.034050366905623
+"34","Phone vs. Text",12,2,"Trivial",0.38,0.8,0.35,0.25,0.5,0.12,0,0.04,"Unimportant",FALSE,0.607266375347717
+"35","Citizen > Immigrant",59,3,"Important",0.77,0.58,0.29,0.17,0,0.77,0.5,0.31,"Unimportant",FALSE,1
+"36","Phone vs. Text",38,1,"Trivial",0.16,0.81,0.74,0.5,0.5,0.34,0,0.04,"Unimportant",FALSE,0.929684916495748
+"37","Phone vs. Text",22,1,"Trivial",0.19,1,0.58,0.1,0.43,0.24,0.07,0.06,"Unimportant",TRUE,1
+"38","Citizen > Immigrant",38,3,"Important",0.94,0.5,0.89,0.5,0.5,0.44,0,0.13,"Unimportant",TRUE,0.370762650766499
+"39","Pet Marijuana",28,3,"Trivial",0.82,1,0,0.4,0.3,0.52,0.2,0.05,"Unimportant",FALSE,0.59487369251467
+"40","Standardized Tests",36,1,"Trivial",0.07,0.64,0.57,0.59,0.39,0.32,0.11,0.39,"Important",TRUE,0.452866887012426
+"41","Citizen > Immigrant",31,3,"Important",0.97,0.33,0.88,0.61,0.23,0.74,0.27,0.43,"Important",FALSE,0.565570569013318
+"42","Pet Marijuana",36,3,"Trivial",0.81,0.95,0.38,0.24,1,0.19,0.5,0.5,"Unimportant",TRUE,0.208247514673424
+"43","Pet Marijuana",29,3,"Trivial",0.71,0,0.45,0.19,0.22,0.49,0.28,0.06,"Unimportant",FALSE,1
+"44","Homosexual Parents",9,2,"Important",0.37,0.22,1,1,1,0.63,0.5,0.5,"Important",FALSE,0.561292841148369
+"45","Faith > Science",60,2,"Important",0.63,0.03,0.87,0.18,0.01,0.62,0.49,0.48,"Unimportant",FALSE,0.534049134976428
+"46","Faith > Science",24,2,"Important",0.52,0,1,1,0,0.52,0.5,0.5,"Important",FALSE,0.804857590547737
+"47","Faith > Science",59,1,"Important",0.14,0.69,0.33,0.56,0.13,0.01,0.37,0.24,"Important",TRUE,0.290755422491758
+"48","Citizen > Immigrant",59,3,"Important",0.77,0.58,0.29,0.17,0,0.77,0.5,0.31,"Unimportant",FALSE,0.520263062479326
+"49","Pet Marijuana",9,3,"Trivial",0.99,0.2,0.85,0.4,0,0.99,0.5,0.5,"Unimportant",FALSE,0.660298234053732
+"50","Standardized Tests",23,3,"Trivial",0.92,0,0.98,0.95,1,0.08,0.5,0.5,"Important",TRUE,0
+"51","Citizen > Immigrant",22,2,"Important",0.53,0.91,0.37,0.63,0.55,0.02,0.05,0.46,"Important",TRUE,0.160120577269214
+"52","Standardized Tests",12,3,"Trivial",0.97,0.25,0.66,0.85,0.2,0.77,0.3,0.5,"Important",FALSE,0.98032028180357
+"53","Standardized Tests",11,1,"Trivial",0.07,0,1,1,0.32,0.25,0.18,0.5,"Important",TRUE,0.535548150942346
+"54","Faith > Science",33,1,"Important",0.02,0.15,0.83,0.79,0.91,0.89,0.41,0.43,"Important",FALSE,1
+"55","Standardized Tests",20,1,"Trivial",0.33,1,0.9,0.8,0.1,0.23,0.4,0.17,"Important",TRUE,0.168715366654309
+"56","Citizen > Immigrant",50,3,"Important",0.83,0,1,1,0,0.83,0.5,0.5,"Important",FALSE,1
+"57","Faith > Science",50,3,"Important",0.74,0,1,1,0,0.74,0.5,0.5,"Important",FALSE,0.926210030819438
+"58","Standardized Tests",53,1,"Trivial",0.21,0.9,0.5,0.19,0.5,0.29,0,0,"Unimportant",FALSE,0.345195817813271
+"59","Homosexual Parents",4,2,"Important",0.54,0.6,0.7,0.25,0.99,0.45,0.49,0.04,"Unimportant",TRUE,0.257530503816032
+"60","Citizen > Immigrant",58,1,"Important",0.11,0,0.95,0.02,0.21,0.1,0.29,0.36,"Unimportant",TRUE,0.373504413283395
+"61","Homosexual Parents",18,2,"Important",0.57,0.34,0.89,0.15,0.29,0.28,0.21,0.24,"Unimportant",FALSE,0.334491316372584
+"62","Homosexual Parents",37,2,"Important",0.38,0.9,0.94,0.9,0.1,0.28,0.4,0.18,"Important",TRUE,0.602538566801916
+"63","Pet Marijuana",13,1,"Trivial",0.09,0.7,0.27,0.4,0.39,0.3,0.11,0.17,"Unimportant",TRUE,0.767122169020509
+"64","Homosexual Parents",42,2,"Important",0.61,0,1,1,1,0.39,0.5,0.12,"Important",TRUE,0.190500936298555
+"65","Citizen > Immigrant",51,1,"Important",0.13,0.5,0.7,0.94,0.78,0.65,0.28,0.08,"Important",FALSE,1
+"66","Citizen > Immigrant",13,3,"Important",0.72,0.08,0.7,1,0.28,0.44,0.22,0.32,"Important",FALSE,0.851383117949734
+"67","Standardized Tests",9,2,"Trivial",0.52,0.19,1,1,0,0.52,0.5,0.5,"Important",FALSE,0.749395051539718
+"68","Standardized Tests",45,3,"Trivial",0.89,0.17,0.9,0.75,0,0.89,0.5,0.37,"Important",FALSE,0.895244683468314
+"69","Standardized Tests",16,1,"Trivial",0.03,0.73,0.59,0.67,0.25,0.22,0.25,0.44,"Important",TRUE,0.701605013460432
+"70","Phone vs. Text",35,1,"Trivial",0.04,1,1,0.98,0.9,0.86,0.4,0.5,"Important",FALSE,0.841878984048352
+"71","Pet Marijuana",53,3,"Trivial",0.7,0.9,0.5,0.49,0.75,0.05,0.25,0.4,"Unimportant",TRUE,0.0184014308161736
+"72","Homosexual Parents",57,1,"Important",0.1,0,1,1,1,0.9,0.5,0.5,"Important",FALSE,1
+"73","Faith > Science",56,3,"Important",0.89,0,0.8,0.75,0.3,0.59,0.2,0.4,"Important",FALSE,0.926601015101945
+"74","Pet Marijuana",52,2,"Trivial",0.66,0.85,0.3,0.25,0.8,0.14,0.3,0.19,"Unimportant",TRUE,0.0893696765883544
+"75","Homosexual Parents",40,2,"Important",0.44,0.16,0.89,0.77,0.04,0.4,0.46,0.41,"Important",TRUE,0.784442692891663
+"76","Phone vs. Text",32,3,"Trivial",0.71,0.45,0.7,0.4,0.55,0.16,0.05,0.06,"Unimportant",TRUE,0.359795886220257
+"77","Citizen > Immigrant",7,2,"Important",0.65,0.25,0.67,0.56,0.3,0.35,0.2,0.27,"Important",FALSE,0.689716125283467
+"78","Citizen > Immigrant",44,3,"Important",0.85,0.02,0.98,0.91,1,0.15,0.5,0.37,"Important",TRUE,0.152558264594007
+"79","Faith > Science",35,1,"Important",0.04,1,1,1,0,0.04,0.5,0.5,"Important",TRUE,0.229785946481711
+"80","Pet Marijuana",17,3,"Trivial",0.98,1,0,1,0,0.98,0.5,0.5,"Important",FALSE,0.883520103056736
+"81","Citizen > Immigrant",16,3,"Important",0.9,0.88,0.41,0.1,0.19,0.71,0.31,0.33,"Unimportant",FALSE,1
+"82","Pet Marijuana",56,1,"Trivial",0.23,0.8,0.19,0.1,0.5,0.27,0,0.09,"Unimportant",FALSE,0.648951389519469
+"83","Phone vs. Text",13,3,"Trivial",0.85,0.36,0.87,0.16,0.73,0.12,0.23,0.46,"Unimportant",TRUE,0.050736272487885
+"84","Homosexual Parents",6,3,"Important",0.77,0,1,1,1,0.23,0.5,0.35,"Important",TRUE,0.291400945039472
+"85","Standardized Tests",32,2,"Trivial",0.37,0.52,0.5,0.4,0.45,0.08,0.05,0,"Unimportant",TRUE,0.212754559220705
+"86","Homosexual Parents",32,1,"Important",0.16,0.5,0.75,0.5,0.5,0.34,0,0.5,"Unimportant",FALSE,0.6199910567889
+"87","Standardized Tests",53,2,"Trivial",0.56,0.9,0.5,0.19,0.5,0.06,0,0.01,"Unimportant",TRUE,0.618367394673679
+"88","Pet Marijuana",28,3,"Trivial",0.82,1,0,0.4,0.3,0.52,0.2,0.05,"Unimportant",FALSE,0.479266339011206
+"89","Homosexual Parents",38,2,"Important",0.42,0.21,0.93,0.9,0.93,0.51,0.43,0.3,"Important",FALSE,0.790806665377178
+"90","Citizen > Immigrant",12,1,"Important",0.17,0,0.9,1,0.1,0.07,0.4,0.4,"Important",TRUE,0.10285391288218
+"91","Faith > Science",30,2,"Important",0.41,0,1,0.37,0,0.41,0.5,0.05,"Unimportant",TRUE,0.564340038414266
+"92","Pet Marijuana",56,3,"Trivial",1,0.8,0.19,0.1,0.5,0.5,0,0.3,"Unimportant",TRUE,0.82143564797968
+"93","Standardized Tests",13,3,"Trivial",0.85,0.28,0.73,0.75,0.3,0.55,0.2,0.24,"Important",FALSE,0.946232546218102
+"94","Homosexual Parents",5,1,"Important",0.1,0.35,0.69,0.15,0.75,0.65,0.25,0.31,"Unimportant",FALSE,0.409985155629303
+"95","Standardized Tests",31,1,"Trivial",0.22,0.67,0.53,0.46,0.66,0.44,0.16,0.13,"Unimportant",FALSE,0.741461142211722
+"96","Pet Marijuana",60,1,"Trivial",0.26,0.72,0.23,0.84,0.05,0.21,0.45,0.18,"Important",TRUE,0
+"97","Citizen > Immigrant",57,3,"Important",0.95,0.2,0.75,0.3,0.1,0.85,0.4,0.3,"Unimportant",FALSE,0.96234058075913
+"98","Homosexual Parents",48,2,"Important",0.58,0.21,0.88,0.1,0.11,0.47,0.39,0.35,"Unimportant",FALSE,0.746604866926385
+"99","Phone vs. Text",28,2,"Trivial",0.58,0.64,0.92,0.67,0.1,0.48,0.4,0.05,"Important",FALSE,0.511892881294176
+"100","Standardized Tests",3,1,"Trivial",0.22,0.6,0.45,0.38,0.3,0.08,0.2,0.1,"Unimportant",TRUE,0.21159752050334
+"101","Standardized Tests",11,2,"Trivial",0.65,0,1,1,0.32,0.33,0.18,0.24,"Important",FALSE,0.318138095298581
+"102","Phone vs. Text",1,1,"Trivial",0,0.7,0.69,0.61,0.62,0.62,0.12,0.48,"Important",FALSE,0.859310616024324
+"103","Faith > Science",53,1,"Important",0.1,0.09,1,1,0,0.1,0.5,0.3,"Important",TRUE,0.0222275976316893
+"104","Pet Marijuana",44,3,"Trivial",0.67,0.89,0.14,0.05,0.5,0.17,0,0,"Unimportant",TRUE,0.0213109376195796
+"105","Pet Marijuana",24,3,"Trivial",0.99,0.6,0.17,0.09,0.16,0.83,0.34,0.19,"Unimportant",FALSE,1
+"106","Pet Marijuana",11,3,"Trivial",0.92,0,1,0,1,0.08,0.5,0.5,"Unimportant",TRUE,0
+"107","Standardized Tests",6,3,"Trivial",0.72,0.44,0.61,0.32,0.2,0.52,0.3,0.28,"Unimportant",FALSE,0.731515930628946
+"108","Citizen > Immigrant",12,3,"Important",0.85,0,0.9,1,0.1,0.75,0.4,0.47,"Important",FALSE,0.455602394683526
+"109","Standardized Tests",50,2,"Trivial",0.54,0,1,0.75,0,0.54,0.5,0.17,"Important",FALSE,0.753246152105579
+"110","Citizen > Immigrant",54,1,"Important",0.02,0,1,1,1,0.98,0.5,0.5,"Important",FALSE,0.99578718045777
+"111","Phone vs. Text",16,1,"Trivial",0.05,0.9,0.29,0.14,0.86,0.81,0.36,0.37,"Unimportant",FALSE,0.955431676161743
+"112","Citizen > Immigrant",34,1,"Important",0.29,0.12,0.84,0.81,1,0.71,0.5,0.4,"Important",FALSE,0.891037015161062
+"113","Citizen > Immigrant",42,2,"Important",0.59,0.58,0.42,0.36,0.6,0.01,0.1,0.13,"Unimportant",TRUE,0
+"114","Homosexual Parents",46,1,"Important",0.17,1,0.98,0.84,0.77,0.6,0.27,0.39,"Important",FALSE,0.73533225831709
+"115","Phone vs. Text",21,3,"Trivial",0.7,0.69,0.96,0.82,0.8,0.1,0.3,0.38,"Important",TRUE,0.228259342995884
+"116","Standardized Tests",27,3,"Trivial",0.69,0.28,0.83,0.35,0.77,0.08,0.27,0.21,"Unimportant",TRUE,0.21055015643197
+"117","Phone vs. Text",58,2,"Trivial",0.59,0,0.93,1,0.79,0.2,0.29,0.01,"Important",TRUE,0.466276777169007
+"118","Standardized Tests",31,2,"Trivial",0.62,0.67,0.53,0.46,0.66,0.04,0.16,0.47,"Unimportant",TRUE,0.192146185897128
+"119","Citizen > Immigrant",1,1,"Important",0.27,0.64,0.64,0.67,0.33,0.06,0.17,0.06,"Important",TRUE,0.0576069012124175
+"120","Phone vs. Text",38,1,"Trivial",0.16,0.81,0.74,0.5,0.5,0.34,0,0.04,"Unimportant",FALSE,0.436259196846684
+"121","Phone vs. Text",42,2,"Trivial",0.57,0.5,0.72,0.82,0.2,0.37,0.3,0.26,"Important",FALSE,0.36427854559215
+"122","Faith > Science",55,1,"Important",0.03,0.1,0.8,0.25,0,0.03,0.5,0.45,"Unimportant",TRUE,0.231977390212198
+"123","Homosexual Parents",16,3,"Important",0.85,0.73,0.29,0.14,0.79,0.06,0.29,0.42,"Unimportant",TRUE,0.242559934872099
+"124","Homosexual Parents",1,2,"Important",0.39,0.34,1,0.8,1,0.61,0.5,0.26,"Important",FALSE,0.792512773212423
+"125","Faith > Science",8,3,"Important",0.85,0.1,0.81,0.04,0.17,0.68,0.33,0.48,"Unimportant",FALSE,1
+"126","Homosexual Parents",34,1,"Important",0.04,0.24,0.5,0.29,0.34,0.3,0.16,0.48,"Unimportant",TRUE,0.162065512302017
+"127","Pet Marijuana",58,1,"Trivial",0.23,0,0.95,0,0.21,0.02,0.29,0.35,"Unimportant",TRUE,0.503352788975591
+"128","Citizen > Immigrant",27,2,"Important",0.41,0.27,0.38,0.4,0.5,0.09,0,0.08,"Unimportant",FALSE,0.582595282412385
+"129","Pet Marijuana",32,1,"Trivial",0.3,0.4,1,0.5,0.2,0.1,0.3,0.1,"Unimportant",TRUE,0.331367087800421
+"130","Phone vs. Text",18,2,"Trivial",0.36,0.69,0.84,0.28,0.89,0.53,0.39,0.32,"Unimportant",FALSE,0.813645104687901
+"131","Homosexual Parents",16,2,"Important",0.35,0.73,0.29,0.14,0.79,0.44,0.29,0.4,"Unimportant",FALSE,0.55472315714966
+"132","Citizen > Immigrant",7,3,"Important",0.95,0.25,0.67,0.56,0.3,0.65,0.2,0.5,"Important",FALSE,1
+"133","Pet Marijuana",11,2,"Trivial",0.54,0,1,0,1,0.46,0.5,0.01,"Unimportant",TRUE,0.163639975864041
+"134","Faith > Science",24,3,"Important",0.93,0,1,1,0,0.93,0.5,0.43,"Important",FALSE,1
+"135","Faith > Science",49,2,"Important",0.49,0,1,1,0,0.49,0.5,0.07,"Important",TRUE,0.381780909957273
+"136","Phone vs. Text",18,3,"Trivial",0.96,0.69,0.84,0.28,0.89,0.07,0.39,0.26,"Unimportant",TRUE,0.687756010763481
+"137","Faith > Science",52,2,"Important",0.42,0.1,0.9,0.9,0,0.42,0.5,0.1,"Important",TRUE,0.522673456854341
+"138","Citizen > Immigrant",7,1,"Important",0.12,0.25,0.67,0.56,0.3,0.18,0.2,0.38,"Important",TRUE,0.209122230001512
+"139","Faith > Science",33,1,"Important",0.02,0.15,0.83,0.79,0.91,0.89,0.41,0.43,"Important",FALSE,1
+"140","Standardized Tests",52,3,"Trivial",0.95,0.75,0.74,0.7,0.75,0.2,0.25,0.31,"Important",TRUE,0.244558440297991
+"141","Pet Marijuana",5,1,"Trivial",0.19,0.15,1,0.19,1,0.81,0.5,0.36,"Unimportant",FALSE,0.657696555504346
+"142","Faith > Science",44,1,"Important",0.17,0.71,0.5,0.35,0.5,0.33,0,0,"Unimportant",FALSE,0.765919677088729
+"143","Phone vs. Text",53,2,"Trivial",0.41,0.9,0.6,0.4,0.75,0.34,0.25,0.25,"Unimportant",FALSE,0.639111713479808
+"144","Standardized Tests",4,2,"Trivial",0.64,0.48,0.95,0.3,0.2,0.44,0.3,0.29,"Unimportant",FALSE,0.727659473865191
+"145","Standardized Tests",9,1,"Trivial",0.13,0.19,1,1,0,0.13,0.5,0.35,"Important",TRUE,0.260015074136499
+"146","Standardized Tests",42,2,"Trivial",0.67,0.8,0,0,0.18,0.49,0.32,0.17,"Unimportant",FALSE,0.725823072001791
+"147","Citizen > Immigrant",3,3,"Important",0.77,0.05,0.95,0.95,0.1,0.67,0.4,0.41,"Important",FALSE,0.596231856233771
+"148","Standardized Tests",50,3,"Trivial",0.7,0,1,0.75,0,0.7,0.5,0.5,"Important",FALSE,0.847042118721537
+"149","Phone vs. Text",15,3,"Trivial",0.96,0.58,0.5,0.15,0.5,0.46,0,0.23,"Unimportant",TRUE,0.624834576098718
+"150","Pet Marijuana",40,3,"Trivial",0.92,0.75,0.58,0.43,0.84,0.08,0.34,0.5,"Unimportant",TRUE,0.303839476421821
+"151","Phone vs. Text",46,3,"Trivial",0.91,0.27,0.7,0.71,0.55,0.36,0.05,0.28,"Important",TRUE,0.947837864883202
+"152","Homosexual Parents",57,3,"Important",0.84,0,1,1,1,0.16,0.5,0.5,"Important",TRUE,0.0602621694722333
+"153","Citizen > Immigrant",19,1,"Important",0.13,0.48,0.56,0.56,0.47,0.34,0.03,0.04,"Important",TRUE,0.324781909080528
+"154","Phone vs. Text",43,2,"Trivial",0.66,0,0.99,0.96,0,0.66,0.5,0.19,"Important",FALSE,1
+"155","Standardized Tests",1,3,"Trivial",0.73,0.8,0.68,0.45,0.32,0.41,0.18,0.12,"Unimportant",FALSE,0.542103431689036
+"156","Faith > Science",28,1,"Important",0.06,0.64,0.38,0.63,0.4,0.34,0.1,0.1,"Important",TRUE,0.671383200580051
+"157","Faith > Science",4,3,"Important",0.74,0.01,0.98,0.85,0,0.74,0.5,0.49,"Important",FALSE,0.528569931728207
+"158","Citizen > Immigrant",32,3,"Important",0.68,0.5,1,0.5,0.5,0.18,0,0.01,"Unimportant",TRUE,0.138474341957763
+"159","Citizen > Immigrant",22,2,"Important",0.53,0.91,0.37,0.63,0.55,0.02,0.05,0.46,"Important",TRUE,0.304714093872971
+"160","Pet Marijuana",15,2,"Trivial",0.43,0.62,0.5,0.17,0.5,0.07,0,0,"Unimportant",FALSE,0.152321376325394
+"161","Phone vs. Text",19,1,"Trivial",0.15,0.51,0.6,0.56,0.59,0.44,0.09,0.16,"Important",FALSE,0
+"162","Pet Marijuana",22,3,"Trivial",0.67,1,0,0,0.5,0.17,0,0,"Unimportant",TRUE,0.454808337476126
+"163","Pet Marijuana",46,3,"Trivial",0.94,0.42,0.62,0.39,0.54,0.4,0.04,0.32,"Unimportant",TRUE,0.290700466589723
+"164","Pet Marijuana",6,3,"Trivial",0.87,0.43,0.61,0.62,0.25,0.62,0.25,0.17,"Important",FALSE,0.722390555719078
+"165","Faith > Science",43,1,"Important",0.23,0.01,1,0.98,0,0.23,0.5,0.39,"Important",TRUE,0.313353415890746
+"166","Faith > Science",41,3,"Important",0.87,0.05,0.86,0.68,0,0.87,0.5,0.37,"Important",FALSE,0.693413154214676
+"167","Citizen > Immigrant",14,1,"Important",0.21,0.53,0.55,0.16,0.37,0.16,0.13,0.2,"Unimportant",TRUE,0.225305583961068
+"168","Pet Marijuana",27,2,"Trivial",0.53,0.19,0.89,0.93,0.78,0.25,0.28,0.26,"Important",TRUE,0.137868736654191
+"169","Faith > Science",5,1,"Important",0.29,0.31,0.72,0.74,0.25,0.04,0.25,0.23,"Important",TRUE,0.28705459649804
+"170","Faith > Science",21,1,"Important",0.24,0.37,0.96,0.5,0.1,0.14,0.4,0.48,"Unimportant",TRUE,0.23949886858135
+"171","Citizen > Immigrant",3,3,"Important",0.77,0.05,0.95,0.95,0.1,0.67,0.4,0.41,"Important",FALSE,0.860799792190609
+"172","Citizen > Immigrant",60,3,"Important",0.69,0.09,0.78,0.66,0.02,0.67,0.48,0.39,"Important",FALSE,0.77865388818115
+"173","Homosexual Parents",15,2,"Important",0.45,0,1,0.88,0.97,0.52,0.47,0.32,"Important",FALSE,0.352565031268042
+"174","Pet Marijuana",56,3,"Trivial",1,0.8,0.19,0.1,0.5,0.5,0,0.3,"Unimportant",TRUE,1
+"175","Homosexual Parents",44,2,"Important",0.53,0,1,0.69,0.01,0.52,0.49,0.37,"Important",FALSE,0.780973653278819
+"176","Pet Marijuana",40,3,"Trivial",0.92,0.75,0.58,0.43,0.84,0.08,0.34,0.5,"Unimportant",TRUE,0.108845713386552
+"177","Faith > Science",1,3,"Important",0.72,0.62,0.64,0.62,0.37,0.35,0.13,0.27,"Important",FALSE,0.600005383884337
+"178","Standardized Tests",4,2,"Trivial",0.64,0.48,0.95,0.3,0.2,0.44,0.3,0.29,"Unimportant",FALSE,0.39759178893905
+"179","Pet Marijuana",14,2,"Trivial",0.62,0.83,0.31,0.45,0.32,0.3,0.18,0.24,"Unimportant",FALSE,1
+"180","Phone vs. Text",11,3,"Trivial",0.79,0,1,1,0.83,0.04,0.33,0.29,"Important",TRUE,0.0817287259753667
+"181","Citizen > Immigrant",47,1,"Important",0.04,0.3,0.82,0.82,0.65,0.61,0.15,0.03,"Important",FALSE,0.985542710518089
+"182","Pet Marijuana",9,3,"Trivial",0.99,0.2,0.85,0.4,0,0.99,0.5,0.5,"Unimportant",FALSE,0.907943589119781
+"183","Pet Marijuana",2,3,"Trivial",0.69,0.97,0.03,0.11,0.25,0.44,0.25,0.07,"Unimportant",FALSE,0.568459021405853
+"184","Homosexual Parents",36,2,"Important",0.41,0.19,0.94,0.83,1,0.59,0.5,0.44,"Important",FALSE,0.841659043804989
+"185","Standardized Tests",39,1,"Trivial",0.15,0.64,0.5,0.44,0.5,0.35,0,0.05,"Unimportant",FALSE,1
+"186","Faith > Science",4,3,"Important",0.74,0.01,0.98,0.85,0,0.74,0.5,0.49,"Important",FALSE,0.993107596240181
+"187","Phone vs. Text",21,1,"Trivial",0.1,0.69,0.96,0.82,0.8,0.7,0.3,0.26,"Important",FALSE,0.923112560959431
+"188","Standardized Tests",17,3,"Trivial",0.85,1,1,1,1,0.15,0.5,0.5,"Important",TRUE,0.115867306511022
+"189","Faith > Science",36,1,"Important",0.24,0.09,0.93,0.63,0.15,0.09,0.35,0.32,"Important",TRUE,0.0555702059363187
+"190","Homosexual Parents",28,3,"Important",0.86,0.25,0.68,0.63,0.2,0.66,0.3,0.0600000000000001,"Important",FALSE,1
+"191","Homosexual Parents",53,2,"Important",0.47,0.5,1,1,1,0.53,0.5,0.4,"Important",FALSE,0.948805636948963
+"192","Phone vs. Text",52,3,"Trivial",0.72,0.75,0.6,0.2,0.8,0.08,0.3,0.3,"Unimportant",TRUE,0.236576924587026
+"193","Faith > Science",20,3,"Important",0.92,1,1,1,0,0.92,0.5,0.5,"Important",FALSE,0.778351527017362
+"194","Standardized Tests",13,2,"Trivial",0.58,0.28,0.73,0.75,0.3,0.28,0.2,0.15,"Important",FALSE,0.590617049912487
+"195","Phone vs. Text",49,1,"Trivial",0.06,0.5,0.66,0.63,0.79,0.73,0.29,0.32,"Important",FALSE,0.93546875004139
+"196","Homosexual Parents",36,3,"Important",0.84,0.19,0.94,0.83,1,0.16,0.5,0.48,"Important",TRUE,0.306925590176747
+"197","Citizen > Immigrant",49,2,"Important",0.39,0.55,0.5,0.51,0.5,0.11,0,0,"Important",FALSE,0.194355057843531
+"198","Phone vs. Text",24,1,"Trivial",0.01,0.59,0.56,0,0.5,0.49,0,0.09,"Unimportant",FALSE,1
+"199","Faith > Science",14,2,"Important",0.55,0.07,0.84,0.75,0,0.55,0.5,0.39,"Important",FALSE,0.287794070559885
+"200","Citizen > Immigrant",10,2,"Important",0.37,0.19,0.5,0,0.3,0.07,0.2,0.08,"Unimportant",TRUE,0.03187321316986
+"201","Pet Marijuana",43,1,"Trivial",0.14,1,0.69,0.29,0.1,0.04,0.4,0.38,"Unimportant",TRUE,0.0482726987796114
+"202","Citizen > Immigrant",8,3,"Important",0.9,0.29,0.66,0.1,0.09,0.81,0.41,0.46,"Unimportant",FALSE,0.956395817539282
+"203","Phone vs. Text",8,3,"Trivial",0.83,0.71,0.78,0.56,0.56,0.27,0.06,0.28,"Important",TRUE,0.62989643579502
+"204","Pet Marijuana",44,1,"Trivial",0.19,0.89,0.14,0.05,0.5,0.31,0,0.07,"Unimportant",FALSE,0.592285357904731
+"205","Pet Marijuana",31,1,"Trivial",0.09,0.5,0,0.01,0.5,0.41,0,0,"Unimportant",FALSE,0.722071921818981
+"206","Standardized Tests",40,1,"Trivial",0.07,0.78,0.58,0.39,0.89,0.82,0.39,0.2,"Unimportant",FALSE,0.899449879165986
+"207","Phone vs. Text",40,1,"Trivial",0.11,0.46,0.86,0.45,0.97,0.86,0.47,0.37,"Unimportant",FALSE,0.90576327574189
+"208","Pet Marijuana",22,3,"Trivial",0.67,1,0,0,0.5,0.17,0,0,"Unimportant",TRUE,0.397839103224319
+"209","Standardized Tests",48,2,"Trivial",0.34,0.35,0.85,0.34,0.38,0.04,0.12,0.27,"Unimportant",TRUE,0.0506610574614437
+"210","Phone vs. Text",45,3,"Trivial",0.85,0.64,0.9,0.75,1,0.15,0.5,0.35,"Important",TRUE,0.11978016519098
+"211","Faith > Science",26,3,"Important",0.89,0.05,1,0.98,0,0.89,0.5,0.5,"Important",FALSE,0.999544753312052
+"212","Pet Marijuana",13,1,"Trivial",0.09,0.7,0.27,0.4,0.39,0.3,0.11,0.17,"Unimportant",TRUE,0.234587943357606
+"213","Homosexual Parents",38,1,"Important",0.11,0.21,0.93,0.9,0.93,0.82,0.43,0.47,"Important",FALSE,1
+"214","Homosexual Parents",31,2,"Important",0.57,0.4,0.96,0.89,0.91,0.34,0.41,0.13,"Important",TRUE,0.847600418361739
+"215","Pet Marijuana",51,3,"Trivial",0.92,0.5,0.5,0.02,0.5,0.42,0,0.14,"Unimportant",TRUE,0.698710087021283
+"216","Faith > Science",11,3,"Important",0.97,0,1,1,0.68,0.29,0.18,0.5,"Important",TRUE,0.54002890072317
+"217","Standardized Tests",13,3,"Trivial",0.85,0.28,0.73,0.75,0.3,0.55,0.2,0.24,"Important",FALSE,0.589021149935352
+"218","Pet Marijuana",27,3,"Trivial",0.83,0.19,0.89,0.93,0.78,0.05,0.28,0.4,"Important",TRUE,0.288911617279196
+"219","Phone vs. Text",22,1,"Trivial",0.19,1,0.58,0.1,0.43,0.24,0.07,0.06,"Unimportant",TRUE,0.129576325836632
+"220","Pet Marijuana",17,2,"Trivial",0.35,1,0,1,0,0.35,0.5,0.5,"Important",TRUE,1
+"221","Standardized Tests",2,2,"Trivial",0.56,0.66,1,0.91,0,0.56,0.5,0.5,"Important",FALSE,0.703684354828799
+"222","Standardized Tests",12,2,"Trivial",0.37,0.25,0.66,0.85,0.2,0.17,0.3,0.09,"Important",TRUE,0.422454869036426
+"223","Phone vs. Text",20,3,"Trivial",0.95,1,0.5,0.2,0.5,0.45,0,0.15,"Unimportant",TRUE,0.641245069376352
+"224","Homosexual Parents",5,2,"Important",0.64,0.35,0.69,0.15,0.75,0.11,0.25,0.26,"Unimportant",TRUE,0.210533098193993
+"225","Pet Marijuana",14,1,"Trivial",0.13,0.83,0.31,0.45,0.32,0.19,0.18,0.07,"Unimportant",TRUE,0.310504909728253
+"226","Pet Marijuana",13,3,"Trivial",0.77,0.7,0.27,0.4,0.39,0.38,0.11,0.08,"Unimportant",FALSE,0.533936547012326
+"227","Pet Marijuana",48,3,"Trivial",0.83,0.53,0.43,0.54,0.57,0.26,0.07,0.08,"Important",TRUE,0.778055852266005
+"228","Standardized Tests",42,1,"Trivial",0.1,0.8,0,0,0.18,0.08,0.32,0.39,"Unimportant",TRUE,0.103674395775279
+"229","Citizen > Immigrant",41,2,"Important",0.66,0.09,0.89,0.79,0.14,0.52,0.36,0.44,"Important",FALSE,1
+"230","Pet Marijuana",23,3,"Trivial",0.97,0,0,0,1,0.03,0.5,0.5,"Unimportant",TRUE,0.0498548252683586
+"231","Phone vs. Text",44,1,"Trivial",0.01,0.52,0.76,0.56,0.87,0.86,0.37,0.27,"Important",FALSE,0.83100798764091
+"232","Standardized Tests",15,2,"Trivial",0.44,0.26,0.7,0.44,0.23,0.21,0.27,0.1,"Unimportant",TRUE,0.231551878362695
+"233","Pet Marijuana",16,2,"Trivial",0.64,0.41,0.36,0.63,0.94,0.3,0.44,0.23,"Important",TRUE,0.353502231324614
+"234","Phone vs. Text",34,3,"Trivial",0.92,0.34,0.61,0.35,0.69,0.23,0.19,0.28,"Unimportant",TRUE,0.672870756302663
+"235","Homosexual Parents",12,3,"Important",0.81,0.05,0.5,0.75,1,0.19,0.5,0.27,"Important",TRUE,0.57951587279309
+"236","Pet Marijuana",33,2,"Trivial",0.44,0.62,0.2,0.5,0.5,0.06,0,0.11,"Unimportant",FALSE,0
+"237","Pet Marijuana",10,3,"Trivial",0.83,1,0,0,0.66,0.17,0.16,0,"Unimportant",TRUE,0.206212208351253
+"238","Homosexual Parents",45,3,"Important",0.86,0,1,1,1,0.14,0.5,0.36,"Important",TRUE,0.333504655706584
+"239","Pet Marijuana",59,3,"Trivial",0.97,0.66,0.23,0.41,0.5,0.47,0,0,"Unimportant",TRUE,0.190415665067968
+"240","Standardized Tests",36,2,"Trivial",0.61,0.64,0.57,0.59,0.39,0.22,0.11,0.17,"Important",FALSE,0.816424141789482
+"241","Standardized Tests",17,2,"Trivial",0.38,1,1,1,1,0.62,0.5,0.5,"Important",FALSE,0.746493784458713
+"242","Phone vs. Text",52,1,"Trivial",0.3,0.75,0.6,0.2,0.8,0.5,0.3,0.1,"Unimportant",FALSE,1
+"243","Standardized Tests",50,1,"Trivial",0.32,0,1,0.75,0,0.32,0.5,0.22,"Important",TRUE,0.170949873097469
+"244","Faith > Science",46,2,"Important",0.55,0.79,0.77,0.86,0.5,0.05,0,0.17,"Important",TRUE,1
+"245","Standardized Tests",26,2,"Trivial",0.6,0.4,0.75,0.36,0,0.6,0.5,0.26,"Unimportant",FALSE,0.887291720823023
+"246","Faith > Science",15,1,"Important",0.13,0.25,0.78,0.53,0.13,0,0.37,0.46,"Important",TRUE,0.131646418781497
+"247","Pet Marijuana",6,1,"Trivial",0.04,0.43,0.61,0.62,0.25,0.21,0.25,0.27,"Important",TRUE,0.32155063915808
+"248","Standardized Tests",13,2,"Trivial",0.58,0.28,0.73,0.75,0.3,0.28,0.2,0.15,"Important",FALSE,0.784416954802618
+"249","Faith > Science",40,2,"Important",0.65,0.6,0.79,0.64,0.63,0.02,0.13,0.2,"Important",TRUE,0.252225004147985
+"250","Citizen > Immigrant",36,2,"Important",0.6,0.21,0.81,0.73,0.53,0.07,0.03,0.02,"Important",TRUE,0.132277839656383
+"251","Citizen > Immigrant",18,1,"Important",0.32,0.71,1,0.77,0.81,0.49,0.31,0.08,"Important",FALSE,1
+"252","Citizen > Immigrant",24,1,"Important",0.15,0,1,1,0,0.15,0.5,0.31,"Important",TRUE,0.128252556720553
+"253","Homosexual Parents",16,3,"Important",0.85,0.73,0.29,0.14,0.79,0.06,0.29,0.42,"Unimportant",TRUE,0.145340583459372
+"254","Phone vs. Text",31,1,"Trivial",0,0.59,0.69,0.46,0.74,0.74,0.24,0.37,"Unimportant",FALSE,0.859499308183342
+"255","Faith > Science",16,2,"Important",0.57,0.67,0.81,0.65,0.1,0.47,0.4,0.3,"Important",FALSE,0.867246562703385
+"256","Pet Marijuana",47,3,"Trivial",0.8,0.49,0.47,0.36,0.64,0.16,0.14,0.39,"Unimportant",TRUE,0.669928981645459
+"257","Citizen > Immigrant",27,3,"Important",1,0.27,0.38,0.4,0.5,0.5,0,0.27,"Unimportant",TRUE,0.945430405766488
+"258","Pet Marijuana",47,1,"Trivial",0.12,0.49,0.47,0.36,0.64,0.52,0.14,0.3,"Unimportant",FALSE,0.958262223560648
+"259","Standardized Tests",19,3,"Trivial",0.82,0.62,1,0.74,0.36,0.46,0.14,0.28,"Important",FALSE,0.494945478626169
+"260","Phone vs. Text",55,2,"Trivial",0.62,0.6,0.3,0.1,0.6,0.02,0.1,0.2,"Unimportant",TRUE,0.26718119900647
+"261","Faith > Science",31,3,"Important",0.91,0.35,0.64,0.53,0.41,0.5,0.09,0.26,"Important",FALSE,1
+"262","Pet Marijuana",40,2,"Trivial",0.44,0.75,0.58,0.43,0.84,0.4,0.34,0.11,"Unimportant",FALSE,1
+"263","Citizen > Immigrant",26,3,"Important",0.74,0.6,0.19,0.11,0.5,0.24,0,0.05,"Unimportant",TRUE,0.645776871358878
+"264","Faith > Science",37,1,"Important",0.24,0.84,0.64,0.61,0.58,0.34,0.08,0.16,"Important",FALSE,0.877263073108812
+"265","Standardized Tests",49,2,"Trivial",0.65,0.81,0.55,0.53,0.5,0.15,0,0.06,"Important",TRUE,0.53815703283253
+"266","Phone vs. Text",40,1,"Trivial",0.11,0.46,0.86,0.45,0.97,0.86,0.47,0.37,"Unimportant",FALSE,0.988783252630619
+"267","Phone vs. Text",49,1,"Trivial",0.06,0.5,0.66,0.63,0.79,0.73,0.29,0.32,"Important",FALSE,0.92959992850876
+"268","Phone vs. Text",32,3,"Trivial",0.71,0.45,0.7,0.4,0.55,0.16,0.05,0.06,"Unimportant",TRUE,0.334698227537524
+"269","Standardized Tests",22,2,"Trivial",0.38,0.9,0.55,0.61,0.32,0.06,0.18,0.23,"Important",TRUE,0.205722529951326
+"270","Homosexual Parents",19,2,"Important",0.45,0.5,0.51,0.56,0.44,0.01,0.06,0.03,"Important",TRUE,0.238675045602757
+"271","Faith > Science",18,2,"Important",0.66,0.18,0.87,0.26,0.27,0.39,0.23,0.09,"Unimportant",FALSE,1
+"272","Citizen > Immigrant",54,1,"Important",0.02,0,1,1,1,0.98,0.5,0.5,"Important",FALSE,1
+"273","Citizen > Immigrant",4,3,"Important",0.75,0.9,0.5,0.08,0.6,0.15,0.1,0.1,"Unimportant",TRUE,0.133822014501015
+"274","Faith > Science",11,2,"Important",0.54,0,1,1,0.68,0.14,0.18,0.38,"Important",TRUE,0.468318810716889
+"275","Citizen > Immigrant",4,3,"Important",0.75,0.9,0.5,0.08,0.6,0.15,0.1,0.1,"Unimportant",TRUE,0.334940937237623
+"276","Phone vs. Text",47,3,"Trivial",0.98,0.21,0.99,0.99,1,0.02,0.5,0.5,"Important",TRUE,0.0368076854468122
+"277","Phone vs. Text",45,3,"Trivial",0.85,0.64,0.9,0.75,1,0.15,0.5,0.35,"Important",TRUE,0.161742235918239
+"278","Phone vs. Text",22,2,"Trivial",0.64,1,0.58,0.1,0.43,0.21,0.07,0.22,"Unimportant",FALSE,0.562149901084754
+"279","Homosexual Parents",1,2,"Important",0.39,0.34,1,0.8,1,0.61,0.5,0.26,"Important",FALSE,0.978074443344398
+"280","Pet Marijuana",36,2,"Trivial",0.35,0.95,0.38,0.24,1,0.65,0.5,0.37,"Unimportant",FALSE,0.702502561822354
+"281","Citizen > Immigrant",53,2,"Important",0.36,0.5,0.48,0.5,0.5,0.14,0,0.2,"Unimportant",FALSE,0
+"282","Standardized Tests",41,2,"Trivial",0.48,0.65,0.89,0.65,0.06,0.42,0.44,0.41,"Important",TRUE,0.533932959760256
+"283","Pet Marijuana",48,3,"Trivial",0.83,0.53,0.43,0.54,0.57,0.26,0.07,0.08,"Important",TRUE,0.233851838046272
+"284","Citizen > Immigrant",38,2,"Important",0.65,0.5,0.89,0.5,0.5,0.15,0,0,"Unimportant",TRUE,0.299818763006987
+"285","Pet Marijuana",52,3,"Trivial",0.98,0.85,0.3,0.25,0.8,0.18,0.3,0.31,"Unimportant",TRUE,0
+"286","Pet Marijuana",57,3,"Trivial",0.99,0.7,0.4,0.8,0.8,0.19,0.3,0.25,"Important",TRUE,0.412720260329443
+"287","Homosexual Parents",41,1,"Important",0.2,0.05,0.93,0.91,1,0.8,0.5,0.5,"Important",FALSE,0.754236162750274
+"288","Phone vs. Text",15,2,"Trivial",0.51,0.58,0.5,0.15,0.5,0.01,0,0.42,"Unimportant",TRUE,0.32320852580731
+"289","Standardized Tests",8,3,"Trivial",0.77,0.6,0.57,0.12,0.21,0.56,0.29,0.27,"Unimportant",FALSE,1
+"290","Standardized Tests",51,3,"Trivial",0.88,0.25,0.81,0.82,0.26,0.62,0.24,0.44,"Important",FALSE,0.808187621404194
+"291","Faith > Science",20,3,"Important",0.92,1,1,1,0,0.92,0.5,0.5,"Important",FALSE,0.733462381807576
+"292","Faith > Science",21,2,"Important",0.51,0.37,0.96,0.5,0.1,0.41,0.4,0.32,"Unimportant",FALSE,0.358906394700731
+"293","Phone vs. Text",26,2,"Trivial",0.63,0.85,0.44,0.01,0.6,0.03,0.1,0.45,"Unimportant",TRUE,0.100491026016585
+"294","Homosexual Parents",55,3,"Important",0.89,0,1,1,1,0.11,0.5,0.3,"Important",TRUE,0.316642663103067
+"295","Pet Marijuana",42,2,"Trivial",0.54,0.8,0,0,1,0.46,0.5,0.04,"Unimportant",TRUE,0.527411647452475
+"296","Faith > Science",57,2,"Important",0.49,0,1,0,0,0.49,0.5,0.5,"Unimportant",TRUE,0.484480450699619
+"297","Standardized Tests",18,3,"Trivial",0.78,0.53,1,0.73,0.71,0.07,0.21,0.24,"Important",TRUE,0.354667621176216
+"298","Homosexual Parents",35,1,"Important",0.17,1,0.6,0.05,0.7,0.53,0.2,0.5,"Unimportant",FALSE,0.719217611315146
+"299","Phone vs. Text",58,3,"Trivial",0.9,0,0.93,1,0.79,0.11,0.29,0.37,"Important",TRUE,0.183248235590421
+"300","Faith > Science",46,1,"Important",0.27,0.79,0.77,0.86,0.5,0.23,0,0.14,"Important",FALSE,0.888526929553231
+"301","Standardized Tests",35,2,"Trivial",0.62,1,1,1,1,0.38,0.5,0.4,"Important",TRUE,0.419682292670072
+"302","Faith > Science",51,2,"Important",0.51,0.39,0.69,0.61,0.62,0.11,0.12,0.42,"Important",TRUE,0.397282810813352
+"303","Faith > Science",33,1,"Important",0.02,0.15,0.83,0.79,0.91,0.89,0.41,0.43,"Important",FALSE,1
+"304","Pet Marijuana",52,3,"Trivial",0.98,0.85,0.3,0.25,0.8,0.18,0.3,0.31,"Unimportant",TRUE,0.670841399419985
+"305","Phone vs. Text",32,1,"Trivial",0,0.45,0.7,0.4,0.55,0.55,0.05,0.45,"Unimportant",FALSE,0.884431162937381
+"306","Pet Marijuana",42,1,"Trivial",0.13,0.8,0,0,1,0.87,0.5,0.26,"Unimportant",FALSE,0.908902125625532
+"307","Pet Marijuana",44,2,"Trivial",0.43,0.89,0.14,0.05,0.5,0.07,0,0.15,"Unimportant",FALSE,0.597818645917331
+"308","Standardized Tests",59,1,"Trivial",0.26,0,0.9,0.87,0.71,0.45,0.21,0.44,"Important",FALSE,1
+"309","Standardized Tests",60,2,"Trivial",0.44,0.93,0.24,0.82,0.81,0.37,0.31,0.24,"Important",FALSE,0.992229902355933
+"310","Standardized Tests",7,2,"Trivial",0.38,0.18,0.72,0.82,0.25,0.13,0.25,0.11,"Important",TRUE,1
+"311","Faith > Science",52,1,"Important",0.16,0.1,0.9,0.9,0,0.16,0.5,0.4,"Important",TRUE,0.268110654101929
+"312","Citizen > Immigrant",26,2,"Important",0.34,0.6,0.19,0.11,0.5,0.16,0,0,"Unimportant",FALSE,0.686875360033823
+"313","Citizen > Immigrant",11,3,"Important",0.7,0,1,1,0,0.7,0.5,0.5,"Important",FALSE,1
+"314","Pet Marijuana",43,3,"Trivial",0.81,1,0.69,0.29,0.1,0.71,0.4,0.4,"Unimportant",FALSE,0.938863377003115
+"315","Faith > Science",14,3,"Important",0.92,0.07,0.84,0.75,0,0.92,0.5,0.5,"Important",FALSE,0.828378850056833
+"316","Pet Marijuana",38,1,"Trivial",0.09,0.77,0.13,0.5,0.5,0.41,0,0,"Unimportant",FALSE,0.626397247711016
+"317","Pet Marijuana",25,3,"Trivial",0.98,1,0.59,0,0.48,0.5,0.02,0.33,"Unimportant",FALSE,0.677572238644931
+"318","Pet Marijuana",51,2,"Trivial",0.36,0.5,0.5,0.02,0.5,0.14,0,0.36,"Unimportant",FALSE,0.3596332721383
+"319","Standardized Tests",11,2,"Trivial",0.65,0,1,1,0.32,0.33,0.18,0.24,"Important",FALSE,0.598858903857537
+"320","Faith > Science",45,2,"Important",0.63,0,1,0.75,0,0.63,0.5,0.1,"Important",FALSE,0.801745710107469
+"321","Phone vs. Text",58,2,"Trivial",0.59,0,0.93,1,0.79,0.2,0.29,0.01,"Important",TRUE,0.676853474726147
+"322","Phone vs. Text",50,3,"Trivial",0.78,0.46,1,0.29,0.9,0.12,0.4,0.38,"Unimportant",TRUE,0.0168782117183811
+"323","Phone vs. Text",32,3,"Trivial",0.71,0.45,0.7,0.4,0.55,0.16,0.05,0.06,"Unimportant",TRUE,0.187023755185085
+"324","Pet Marijuana",12,1,"Trivial",0.23,1,0,0,0.9,0.67,0.4,0.27,"Unimportant",FALSE,1
+"325","Standardized Tests",18,3,"Trivial",0.78,0.53,1,0.73,0.71,0.07,0.21,0.24,"Important",TRUE,0.239033795854116
+"326","Citizen > Immigrant",17,3,"Important",0.99,1,1,1,1,0.01,0.5,0.5,"Important",TRUE,0.0284990263795626
+"327","Standardized Tests",55,1,"Trivial",0.33,0.2,0.55,0,0,0.33,0.5,0.3,"Unimportant",TRUE,0.706175391280125
+"328","Pet Marijuana",33,1,"Trivial",0.03,0.62,0.2,0.5,0.5,0.47,0,0,"Unimportant",FALSE,0.739690057292457
+"329","Faith > Science",13,1,"Important",0.13,0,1,1,0,0.13,0.5,0.38,"Important",TRUE,0.542665330963037
+"330","Faith > Science",6,3,"Important",0.74,0,1,1,0,0.74,0.5,0.44,"Important",FALSE,0.943765690850182
+"331","Standardized Tests",5,1,"Trivial",0.3,0.62,0.93,0.66,0.34,0.04,0.16,0.33,"Important",TRUE,0.0802151089143185
+"332","Faith > Science",30,3,"Important",0.82,0,1,0.37,0,0.82,0.5,0.44,"Unimportant",FALSE,0.948683387803643
+"333","Faith > Science",37,1,"Important",0.24,0.84,0.64,0.61,0.58,0.34,0.08,0.16,"Important",FALSE,0.418174973520683
+"334","Standardized Tests",47,1,"Trivial",0.29,0.51,0.65,0.57,0.5,0.21,0,0.23,"Important",FALSE,0.0878055120131079
+"335","Faith > Science",14,2,"Important",0.55,0.07,0.84,0.75,0,0.55,0.5,0.39,"Important",FALSE,1
+"336","Homosexual Parents",51,3,"Important",0.75,0,1,1,1,0.25,0.5,0.37,"Important",TRUE,0.470647403785059
+"337","Pet Marijuana",56,3,"Trivial",1,0.8,0.19,0.1,0.5,0.5,0,0.3,"Unimportant",TRUE,0.490775262479537
+"338","Faith > Science",45,3,"Important",0.7,0,1,0.75,0,0.7,0.5,0.19,"Important",FALSE,0.56285477941241
+"339","Standardized Tests",40,1,"Trivial",0.07,0.78,0.58,0.39,0.89,0.82,0.39,0.2,"Unimportant",FALSE,1
+"340","Faith > Science",25,1,"Important",0.07,0,1,1,0,0.07,0.5,0.5,"Important",TRUE,0
+"341","Faith > Science",15,2,"Important",0.55,0.25,0.78,0.53,0.13,0.42,0.37,0.22,"Important",FALSE,0.568637533655158
+"342","Homosexual Parents",6,3,"Important",0.77,0,1,1,1,0.23,0.5,0.35,"Important",TRUE,0.504137654335133
+"343","Homosexual Parents",49,2,"Important",0.62,0.72,0.59,0.7,0.81,0.19,0.31,0.21,"Important",TRUE,0.475249987971082
+"344","Faith > Science",11,3,"Important",0.97,0,1,1,0.68,0.29,0.18,0.5,"Important",TRUE,0
+"345","Faith > Science",52,1,"Important",0.16,0.1,0.9,0.9,0,0.16,0.5,0.4,"Important",TRUE,0.11237510626238
+"346","Faith > Science",24,1,"Important",0.08,0,1,1,0,0.08,0.5,0.42,"Important",TRUE,0.357230719784671
+"347","Phone vs. Text",1,2,"Trivial",0.35,0.7,0.69,0.61,0.62,0.27,0.12,0.25,"Important",FALSE,0.512310682259793
+"348","Phone vs. Text",18,3,"Trivial",0.96,0.69,0.84,0.28,0.89,0.07,0.39,0.26,"Unimportant",TRUE,0.457238083734761
+"349","Faith > Science",30,2,"Important",0.41,0,1,0.37,0,0.41,0.5,0.05,"Unimportant",TRUE,0.748706611381278
+"350","Standardized Tests",32,2,"Trivial",0.37,0.52,0.5,0.4,0.45,0.08,0.05,0,"Unimportant",TRUE,0.0812908733223618
+"351","Homosexual Parents",31,2,"Important",0.57,0.4,0.96,0.89,0.91,0.34,0.41,0.13,"Important",TRUE,0.584211252244055
+"352","Pet Marijuana",40,3,"Trivial",0.92,0.75,0.58,0.43,0.84,0.08,0.34,0.5,"Unimportant",TRUE,0.267980374259589
+"353","Standardized Tests",24,1,"Trivial",0.07,0.6,0.5,0.54,0.5,0.43,0,0,"Important",FALSE,0.924241224650814
+"354","Faith > Science",9,2,"Important",0.67,0.19,0.91,0.75,0.25,0.42,0.25,0.0600000000000001,"Important",FALSE,0.594475346581278
+"355","Faith > Science",59,2,"Important",0.66,0.69,0.33,0.56,0.13,0.53,0.37,0.21,"Important",FALSE,0.686224713950318
+"356","Pet Marijuana",14,3,"Trivial",0.85,0.83,0.31,0.45,0.32,0.53,0.18,0.11,"Unimportant",FALSE,0.574178381277042
+"357","Faith > Science",3,3,"Important",0.81,0.35,0.76,0.64,0.1,0.71,0.4,0.41,"Important",FALSE,0.945799452022766
+"358","Phone vs. Text",46,1,"Trivial",0.02,0.27,0.7,0.71,0.55,0.53,0.05,0.3,"Important",FALSE,0.748656226491622
+"359","Citizen > Immigrant",43,2,"Important",0.48,0,0.99,0.9,0.26,0.22,0.24,0.07,"Important",TRUE,0.346266925818994
+"360","Faith > Science",22,1,"Important",0.26,0,1,1,0,0.26,0.5,0.29,"Important",TRUE,0.438752023968875
+"361","Standardized Tests",43,2,"Trivial",0.43,0.24,0.95,0.61,0.25,0.18,0.25,0.11,"Important",TRUE,0.539454793997973
+"362","Phone vs. Text",28,1,"Trivial",0.23,0.64,0.92,0.67,0.1,0.13,0.4,0.41,"Important",TRUE,0.111491749634321
+"363","Phone vs. Text",34,3,"Trivial",0.92,0.34,0.61,0.35,0.69,0.23,0.19,0.28,"Unimportant",TRUE,0.256758812783439
+"364","Homosexual Parents",18,1,"Important",0.28,0.34,0.89,0.15,0.29,0.01,0.21,0.21,"Unimportant",TRUE,0.298622723099369
+"365","Phone vs. Text",46,2,"Trivial",0.56,0.27,0.7,0.71,0.55,0.01,0.05,0.22,"Important",TRUE,0.503533093813923
+"366","Phone vs. Text",51,2,"Trivial",0.61,0.74,0.76,0.5,0.64,0.03,0.14,0.22,"Unimportant",TRUE,0.598835057059866
+"367","Pet Marijuana",20,1,"Trivial",0.32,1,0.5,0.3,0.95,0.63,0.45,0.16,"Unimportant",FALSE,0.851617193032933
+"368","Citizen > Immigrant",27,3,"Important",1,0.27,0.38,0.4,0.5,0.5,0,0.27,"Unimportant",TRUE,0.817684086242645
+"369","Citizen > Immigrant",37,3,"Important",0.76,0.9,0.55,0.4,0.5,0.26,0,0.15,"Unimportant",TRUE,0.493467632334123
+"370","Faith > Science",60,1,"Important",0.14,0.03,0.87,0.18,0.01,0.13,0.49,0.38,"Unimportant",TRUE,0.338070356414582
+"371","Phone vs. Text",46,2,"Trivial",0.56,0.27,0.7,0.71,0.55,0.01,0.05,0.22,"Important",TRUE,0.0241469464503864
+"372","Homosexual Parents",20,3,"Important",0.89,1,1,1,1,0.11,0.5,0.45,"Important",TRUE,0.202185504645588
+"373","Faith > Science",33,2,"Important",0.56,0.15,0.83,0.79,0.91,0.35,0.41,0.07,"Important",TRUE,0.22464128416113
+"374","Standardized Tests",40,3,"Trivial",0.84,0.78,0.58,0.39,0.89,0.05,0.39,0.28,"Unimportant",TRUE,0.26276247819865
+"375","Standardized Tests",48,2,"Trivial",0.34,0.35,0.85,0.34,0.38,0.04,0.12,0.27,"Unimportant",TRUE,0.143095026494947
+"376","Pet Marijuana",59,3,"Trivial",0.97,0.66,0.23,0.41,0.5,0.47,0,0,"Unimportant",TRUE,0.615080595602614
+"377","Faith > Science",4,3,"Important",0.74,0.01,0.98,0.85,0,0.74,0.5,0.49,"Important",FALSE,0.786935723606825
+"378","Citizen > Immigrant",12,1,"Important",0.17,0,0.9,1,0.1,0.07,0.4,0.4,"Important",TRUE,0.033471066181964
+"379","Standardized Tests",46,2,"Trivial",0.47,0.33,0.8,0.75,0.74,0.27,0.24,0.14,"Important",FALSE,0.206198552188542
+"380","Faith > Science",3,3,"Important",0.81,0.35,0.76,0.64,0.1,0.71,0.4,0.41,"Important",FALSE,0.982028457700582
+"381","Citizen > Immigrant",45,2,"Important",0.45,0.23,1,1,0,0.45,0.5,0.25,"Important",TRUE,0.250879024868751
+"382","Standardized Tests",21,1,"Trivial",0.14,0.66,0.77,0.59,0.8,0.66,0.3,0.14,"Important",FALSE,0.785027475540449
+"383","Standardized Tests",46,2,"Trivial",0.47,0.33,0.8,0.75,0.74,0.27,0.24,0.14,"Important",FALSE,1
+"384","Pet Marijuana",27,2,"Trivial",0.53,0.19,0.89,0.93,0.78,0.25,0.28,0.26,"Important",TRUE,0.582973862329483
+"385","Faith > Science",11,3,"Important",0.97,0,1,1,0.68,0.29,0.18,0.5,"Important",TRUE,0.735424049999338
+"386","Pet Marijuana",35,1,"Trivial",0.29,1,1,0.95,1,0.71,0.5,0.3,"Important",FALSE,0.889557312463528
+"387","Citizen > Immigrant",30,2,"Important",0.56,0.42,0.61,0.21,0.1,0.46,0.4,0.14,"Unimportant",FALSE,0.85812854018987
+"388","Pet Marijuana",8,3,"Trivial",0.92,0.77,0.53,0.29,0.37,0.55,0.13,0.25,"Unimportant",FALSE,0.663264463821259
+"389","Faith > Science",13,3,"Important",0.85,0,1,1,0,0.85,0.5,0.5,"Important",FALSE,1
+"390","Standardized Tests",48,1,"Trivial",0.15,0.35,0.85,0.34,0.38,0.23,0.12,0.32,"Unimportant",TRUE,0.449264982431703
+"391","Citizen > Immigrant",2,1,"Important",0.33,0.43,0.92,0.66,0.25,0.08,0.25,0.5,"Important",TRUE,0.611261124774463
+"392","Standardized Tests",5,3,"Trivial",0.87,0.62,0.93,0.66,0.34,0.53,0.16,0.23,"Important",FALSE,1
+"393","Phone vs. Text",41,2,"Trivial",0.59,0.79,0.18,0.05,0.58,0.01,0.08,0.43,"Unimportant",TRUE,0.226347907469035
+"394","Citizen > Immigrant",33,3,"Important",0.95,0.6,0.5,0.54,0.5,0.45,0,0.09,"Important",TRUE,0.703548728389093
+"395","Phone vs. Text",57,2,"Trivial",0.58,0.65,1,0.6,0.7,0.12,0.2,0.3,"Important",TRUE,0.606547173269172
+"396","Homosexual Parents",7,3,"Important",0.81,0,0.84,0.9,0.95,0.14,0.45,0.3,"Important",TRUE,0.2213754635069
+"397","Citizen > Immigrant",32,2,"Important",0.41,0.5,1,0.5,0.5,0.09,0,0,"Unimportant",FALSE,0.170723197392358
+"398","Citizen > Immigrant",46,3,"Important",0.83,0.78,0.92,0.84,0.82,0.01,0.32,0.5,"Important",TRUE,0.0486548911115126
+"399","Homosexual Parents",40,3,"Important",0.71,0.16,0.89,0.77,0.04,0.67,0.46,0.31,"Important",FALSE,0.849868559644855
+"400","Phone vs. Text",32,1,"Trivial",0,0.45,0.7,0.4,0.55,0.55,0.05,0.45,"Unimportant",FALSE,0.864535142967459
+"401","Faith > Science",57,2,"Important",0.49,0,1,0,0,0.49,0.5,0.5,"Unimportant",TRUE,0.605036884934713
+"402","Standardized Tests",33,1,"Trivial",0,0.69,0.31,0.3,0.5,0.5,0,0.11,"Unimportant",FALSE,0.816930734585615
+"403","Standardized Tests",3,2,"Trivial",0.43,0.6,0.45,0.38,0.3,0.13,0.2,0.2,"Unimportant",TRUE,0.256067248343942
+"404","Faith > Science",47,3,"Important",0.82,0.17,1,1,1,0.18,0.5,0.5,"Important",TRUE,0.0783616304737096
+"405","Citizen > Immigrant",6,1,"Important",0.05,0.02,0.91,0.96,0.25,0.2,0.25,0.5,"Important",TRUE,0.268415361770487
+"406","Phone vs. Text",58,3,"Trivial",0.9,0,0.93,1,0.79,0.11,0.29,0.37,"Important",TRUE,0
+"407","Citizen > Immigrant",25,3,"Important",0.85,0.76,0.83,0.81,0.16,0.69,0.34,0.5,"Important",FALSE,0.864915302623023
+"408","Homosexual Parents",53,2,"Important",0.47,0.5,1,1,1,0.53,0.5,0.4,"Important",FALSE,0.286218498690421
+"409","Standardized Tests",55,2,"Trivial",0.49,0.2,0.55,0,0,0.49,0.5,0.5,"Unimportant",TRUE,0.514320609069606
+"410","Standardized Tests",28,3,"Trivial",0.74,0.85,0.6,0.63,0.3,0.44,0.2,0.4,"Important",FALSE,1
+"411","Homosexual Parents",54,1,"Important",0.13,0,1,1,0,0.13,0.5,0.41,"Important",TRUE,0.399812767814101
+"412","Faith > Science",34,3,"Important",0.99,0.36,0.63,0.6,0.76,0.23,0.26,0.41,"Important",TRUE,0.793224471049047
+"413","Faith > Science",55,3,"Important",0.69,0.1,0.8,0.25,0,0.69,0.5,0.2,"Unimportant",FALSE,0.647549832315801
+"414","Faith > Science",54,1,"Important",0,0,1,1,0.94,0.94,0.44,0.5,"Important",FALSE,0.569474678087204
+"415","Citizen > Immigrant",10,3,"Important",0.7,0.19,0.5,0,0.3,0.4,0.2,0.1,"Unimportant",FALSE,0.461796367757122
+"416","Pet Marijuana",59,3,"Trivial",0.97,0.66,0.23,0.41,0.5,0.47,0,0,"Unimportant",TRUE,0.906575575845796
+"417","Citizen > Immigrant",48,3,"Important",0.76,0.34,0.86,0.92,0.96,0.2,0.46,0.32,"Important",TRUE,0.351973251509231
+"418","Phone vs. Text",35,3,"Trivial",0.84,1,1,0.98,0.9,0.06,0.4,0.46,"Important",TRUE,0
+"419","Standardized Tests",25,1,"Trivial",0.25,0.61,0.83,0.86,0.1,0.15,0.4,0.38,"Important",TRUE,0.41975575116386
+"420","Homosexual Parents",31,2,"Important",0.57,0.4,0.96,0.89,0.91,0.34,0.41,0.13,"Important",TRUE,0.602331182943964
+"421","Homosexual Parents",20,3,"Important",0.89,1,1,1,1,0.11,0.5,0.45,"Important",TRUE,0.395533217178253
+"422","Standardized Tests",7,1,"Trivial",0.25,0.18,0.72,0.82,0.25,0,0.25,0.39,"Important",TRUE,0.0924321202243279
+"423","Citizen > Immigrant",1,2,"Important",0.54,0.64,0.64,0.67,0.33,0.21,0.17,0.24,"Important",FALSE,1
+"424","Standardized Tests",6,3,"Trivial",0.72,0.44,0.61,0.32,0.2,0.52,0.3,0.28,"Unimportant",FALSE,0.647084306297562
+"425","Citizen > Immigrant",5,2,"Important",0.53,0.65,0.66,0.85,0.57,0.04,0.07,0.1,"Important",TRUE,0.415245126721648
+"426","Standardized Tests",26,3,"Trivial",0.72,0.4,0.75,0.36,0,0.72,0.5,0.37,"Unimportant",FALSE,1
+"427","Faith > Science",11,1,"Important",0.28,0,1,1,0.68,0.4,0.18,0.5,"Important",FALSE,0.682261935998644
+"428","Pet Marijuana",17,1,"Trivial",0.18,1,0,1,0,0.18,0.5,0.5,"Important",TRUE,0.337360772303938
+"429","Citizen > Immigrant",13,2,"Important",0.44,0.08,0.7,1,0.28,0.16,0.22,0.33,"Important",TRUE,0.0639558184512358
+"430","Homosexual Parents",30,2,"Important",0.35,0,1,1,1,0.65,0.5,0.39,"Important",FALSE,1
+"431","Homosexual Parents",20,2,"Important",0.49,1,1,1,1,0.51,0.5,0.3,"Important",FALSE,0.902861100442959
+"432","Phone vs. Text",31,2,"Trivial",0.53,0.59,0.69,0.46,0.74,0.21,0.24,0.04,"Unimportant",TRUE,0.647742631217717
+"433","Phone vs. Text",42,3,"Trivial",0.92,0.5,0.72,0.82,0.2,0.72,0.3,0.17,"Important",FALSE,0.588463741976176
+"434","Faith > Science",3,3,"Important",0.81,0.35,0.76,0.64,0.1,0.71,0.4,0.41,"Important",FALSE,0.727099499994554
+"435","Citizen > Immigrant",26,3,"Important",0.74,0.6,0.19,0.11,0.5,0.24,0,0.05,"Unimportant",TRUE,1
+"436","Phone vs. Text",12,3,"Trivial",0.72,0.8,0.35,0.25,0.5,0.22,0,0.14,"Unimportant",TRUE,0.248217272818306
+"437","Pet Marijuana",27,1,"Trivial",0.22,0.19,0.89,0.93,0.78,0.56,0.28,0.39,"Important",FALSE,0.699610311581945
+"438","Standardized Tests",56,2,"Trivial",0.5,0.9,0.19,0.5,0.5,0,0,0.48,"Unimportant",TRUE,0.209489186244558
+"439","Standardized Tests",12,3,"Trivial",0.97,0.25,0.66,0.85,0.2,0.77,0.3,0.5,"Important",FALSE,0.917271357007843
+"440","Pet Marijuana",29,3,"Trivial",0.71,0,0.45,0.19,0.22,0.49,0.28,0.06,"Unimportant",FALSE,0.7599590567251
+"441","Faith > Science",28,2,"Important",0.67,0.64,0.38,0.63,0.4,0.27,0.1,0.13,"Important",FALSE,0.584799057871743
+"442","Faith > Science",29,2,"Important",0.42,0,0,0.02,0,0.42,0.5,0.5,"Unimportant",TRUE,0.192650312307752
+"443","Pet Marijuana",20,3,"Trivial",0.7,1,0.5,0.3,0.95,0.25,0.45,0.3,"Unimportant",TRUE,0.16155968375092
+"444","Faith > Science",6,2,"Important",0.43,0,1,1,0,0.43,0.5,0.17,"Important",TRUE,0.367222538719335
+"445","Pet Marijuana",19,1,"Trivial",0.16,0.5,0.86,0,0.5,0.34,0,0.11,"Unimportant",FALSE,0.314599212764605
+"446","Homosexual Parents",26,3,"Important",0.79,0,1,0.98,1,0.21,0.5,0.3,"Important",TRUE,0.121790485141565
+"447","Faith > Science",29,2,"Important",0.42,0,0,0.02,0,0.42,0.5,0.5,"Unimportant",TRUE,0.397403972389472
+"448","Homosexual Parents",13,3,"Important",0.81,0,1,1,1,0.19,0.5,0.14,"Important",TRUE,0.352786705745275
+"449","Standardized Tests",18,3,"Trivial",0.78,0.53,1,0.73,0.71,0.07,0.21,0.24,"Important",TRUE,0.150097421801477
+"450","Standardized Tests",29,2,"Trivial",0.49,0.33,0.15,0,0,0.49,0.5,0.4,"Unimportant",TRUE,0.180397412625156
+"451","Pet Marijuana",6,3,"Trivial",0.87,0.43,0.61,0.62,0.25,0.62,0.25,0.17,"Important",FALSE,0.838954483652537
+"452","Pet Marijuana",20,3,"Trivial",0.7,1,0.5,0.3,0.95,0.25,0.45,0.3,"Unimportant",TRUE,0.589681789940298
+"453","Pet Marijuana",7,1,"Trivial",0.19,0.64,0.57,0.57,0.29,0.1,0.21,0.02,"Important",TRUE,0.0370710915619906
+"454","Standardized Tests",39,1,"Trivial",0.15,0.64,0.5,0.44,0.5,0.35,0,0.05,"Unimportant",FALSE,1
+"455","Pet Marijuana",25,2,"Trivial",0.41,1,0.59,0,0.48,0.07,0.02,0,"Unimportant",TRUE,0.00331180257111492
+"456","Citizen > Immigrant",45,2,"Important",0.45,0.23,1,1,0,0.45,0.5,0.25,"Important",TRUE,0.800512076440656
+"457","Homosexual Parents",38,1,"Important",0.11,0.21,0.93,0.9,0.93,0.82,0.43,0.47,"Important",FALSE,0.997852148951187
+"458","Faith > Science",17,1,"Important",0.07,1,1,1,1,0.93,0.5,0.5,"Important",FALSE,0.761158894191855
+"459","Standardized Tests",33,1,"Trivial",0,0.69,0.31,0.3,0.5,0.5,0,0.11,"Unimportant",FALSE,0.33260719475629
+"460","Faith > Science",42,1,"Important",0.27,0.14,0.85,1,0,0.27,0.5,0.24,"Important",TRUE,0.203009804593324
+"461","Homosexual Parents",22,1,"Important",0.09,0,1,0.99,1,0.91,0.5,0.5,"Important",FALSE,0.953321783634639
+"462","Standardized Tests",44,3,"Trivial",0.67,0.86,0.5,0.31,0.53,0.14,0.03,0.04,"Unimportant",TRUE,0
+"463","Standardized Tests",56,1,"Trivial",0.2,0.9,0.19,0.5,0.5,0.3,0,0,"Unimportant",FALSE,0.746085972375822
+"464","Standardized Tests",23,2,"Trivial",0.66,0,0.98,0.95,1,0.34,0.5,0.3,"Important",TRUE,0.467384482931801
+"465","Pet Marijuana",35,1,"Trivial",0.29,1,1,0.95,1,0.71,0.5,0.3,"Important",FALSE,0.842571991001208
+"466","Citizen > Immigrant",9,1,"Important",0.28,0.41,0.85,0.76,0.7,0.42,0.2,0.5,"Important",FALSE,0.68192556645862
+"467","Pet Marijuana",30,1,"Trivial",0.06,1,0,0,0.7,0.64,0.2,0.24,"Unimportant",FALSE,0.693393074825751
+"468","Pet Marijuana",36,2,"Trivial",0.35,0.95,0.38,0.24,1,0.65,0.5,0.37,"Unimportant",FALSE,1
+"469","Homosexual Parents",11,2,"Important",0.36,0,1,0,0.97,0.61,0.47,0.5,"Unimportant",FALSE,0.931507469171329
+"470","Phone vs. Text",25,2,"Trivial",0.65,0.5,0.47,0,0.44,0.21,0.06,0.04,"Unimportant",FALSE,0.434722451118741
+"471","Standardized Tests",45,3,"Trivial",0.89,0.17,0.9,0.75,0,0.89,0.5,0.37,"Important",FALSE,0.744278613752868
+"472","Faith > Science",11,1,"Important",0.28,0,1,1,0.68,0.4,0.18,0.5,"Important",FALSE,0.774209408995269
+"473","Homosexual Parents",33,3,"Important",0.7,0.38,0.5,0.5,0.5,0.2,0,0.03,"Unimportant",TRUE,0
+"474","Homosexual Parents",25,2,"Important",0.36,0,1,1,1,0.64,0.5,0.5,"Important",FALSE,0.912611668199489
+"475","Standardized Tests",45,1,"Trivial",0.16,0.17,0.9,0.75,0,0.16,0.5,0.34,"Important",TRUE,0.326658270786848
+"476","Homosexual Parents",48,1,"Important",0.33,0.21,0.88,0.1,0.11,0.22,0.39,0.29,"Unimportant",TRUE,0.537370533899619
+"477","Pet Marijuana",19,1,"Trivial",0.16,0.5,0.86,0,0.5,0.34,0,0.11,"Unimportant",FALSE,1
+"478","Faith > Science",23,2,"Important",0.5,0,0.97,0.95,1,0.5,0.5,0.1,"Important",TRUE,1
+"479","Pet Marijuana",49,2,"Trivial",0.63,0.74,0.42,0.28,0.47,0.16,0.03,0.08,"Unimportant",FALSE,0.705051148857334
+"480","Pet Marijuana",15,3,"Trivial",0.82,0.62,0.5,0.17,0.5,0.32,0,0,"Unimportant",TRUE,0.146618251754393
+"481","Pet Marijuana",40,3,"Trivial",0.92,0.75,0.58,0.43,0.84,0.08,0.34,0.5,"Unimportant",TRUE,0.0570094239823004
+"482","Phone vs. Text",43,1,"Trivial",0.12,0,0.99,0.96,0,0.12,0.5,0.44,"Important",TRUE,0.133932072618507
+"483","Faith > Science",54,2,"Important",0.34,0,1,1,0.94,0.6,0.44,0.22,"Important",FALSE,1
+"484","Faith > Science",6,2,"Important",0.43,0,1,1,0,0.43,0.5,0.17,"Important",TRUE,0.213092841360924
+"485","Homosexual Parents",8,3,"Important",0.87,0,1,1,1,0.13,0.5,0.3,"Important",TRUE,0.313286552212388
+"486","Homosexual Parents",56,2,"Important",0.46,0,1,1,0,0.46,0.5,0.35,"Important",TRUE,0.251453587340143
+"487","Faith > Science",3,3,"Important",0.81,0.35,0.76,0.64,0.1,0.71,0.4,0.41,"Important",FALSE,0.909858589851643
+"488","Phone vs. Text",58,3,"Trivial",0.9,0,0.93,1,0.79,0.11,0.29,0.37,"Important",TRUE,0.614436647306549
+"489","Faith > Science",5,2,"Important",0.6,0.31,0.72,0.74,0.25,0.35,0.25,0.5,"Important",FALSE,0.612839905930055
+"490","Faith > Science",32,1,"Important",0.32,0.5,0.5,0.5,0.55,0.23,0.05,0.05,"Unimportant",FALSE,0.596199966590163
+"491","Phone vs. Text",46,2,"Trivial",0.56,0.27,0.7,0.71,0.55,0.01,0.05,0.22,"Important",TRUE,0.202765920748653
+"492","Citizen > Immigrant",56,3,"Important",0.71,0.8,0.8,0.75,0.85,0.14,0.35,0.31,"Important",TRUE,0.121316702667246
+"493","Standardized Tests",16,3,"Trivial",0.75,0.73,0.59,0.67,0.25,0.5,0.25,0.38,"Important",FALSE,0.833310049796242
+"494","Citizen > Immigrant",11,2,"Important",0.63,0,1,1,0,0.63,0.5,0.5,"Important",FALSE,0.689569969439523
+"495","Faith > Science",7,2,"Important",0.36,0.66,0.55,0.78,0.21,0.15,0.29,0.19,"Important",TRUE,0.577515205606067
+"496","Citizen > Immigrant",1,2,"Important",0.54,0.64,0.64,0.67,0.33,0.21,0.17,0.24,"Important",FALSE,0.570925859543946
+"497","Pet Marijuana",48,3,"Trivial",0.83,0.53,0.43,0.54,0.57,0.26,0.07,0.08,"Important",TRUE,0
+"498","Homosexual Parents",22,1,"Important",0.09,0,1,0.99,1,0.91,0.5,0.5,"Important",FALSE,0.870594809511192
+"499","Phone vs. Text",10,3,"Trivial",0.94,0.8,0.4,0,0.3,0.64,0.2,0.4,"Unimportant",FALSE,0.939137053051281
+"500","Homosexual Parents",36,1,"Important",0.31,0.19,0.94,0.83,1,0.69,0.5,0.5,"Important",FALSE,0.615678683192942

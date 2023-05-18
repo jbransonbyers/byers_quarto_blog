@@ -1,0 +1,458 @@
+---
+title: "Ordered Beta Regression and Other Models"
+author: "J. Branson Byers"
+date: "2023-02-01"
+categories: [news, code, analysis]
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)        # ggplot, dplyr, %>%, and friends
+library(brms)             # Bayesian modeling through Stan
+library(tidybayes)        # Manipulate Stan objects in a tidy way
+library(bayestestR)
+library(broom)            # Convert model objects to data frames
+library(broom.mixed)      # Convert brms model objects to data frames
+library(betareg)          # Run beta regression models
+library(ordbetareg)       # For running ordered beta regression
+library(extraDistr)       # Use extra distributions like dprop()
+library(ggdist)           # Special geoms for posterior distributions
+library(gghalves)         # Special half geoms
+library(ggbeeswarm)       # Special distribution-shaped point jittering
+library(ggrepel)          # Automatically position labels
+library(patchwork)        # Combine ggplot objects
+library(marginaleffects)  # Calculate marginal effects for frequentist models
+library(emmeans)          # Calculate marginal effects in even fancier ways
+library(modelsummary)     # Create side-by-side regression tables
+library(modelr)
+library(lmtest)           # some nice functions for vetting linear models
+library(knitr)
+library(kableExtra)
+library(data.table)
+library(ggplot2)
+library(hablar)
+library(rstanarm)
+library(loo)
+library(cowplot)
+```
+
+```{r setup-figures, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center", fig.retina = 3,
+                      fig.width = 9, fig.height = (7 * 0.618),
+                      out.width = "90%", collapse = TRUE)
+options(digits = 2, width = 90)
+```
+
+# Introduction
+
+In psychology research, it is common to come across data sets that are comprised of continuous responses on a finite scale. When it comes time to making claims about that data, scientists often default to Ordinary Least Squares Regression. Let's take a dataset of precisely this kind of data: continuous, bounded responses from humans, and see how different models perform. We will note some flaws of these models, and demonstrate the benefits of some of the newer, more advanced models being used today. We make the case that for any kind of bounded, continuous data, Ordered Beta Regression should be used since it is a more general and sparse model than other good alternatives.
+
+## The Data
+
+The data that we examine here is an approximated version of an unpublished data set regarding disagreement. Let's load in our data, and take a look at what we are working with.
+
+```{r}
+# read in the data
+data = read.csv(file = 'ord_bet_reg_data.csv')
+
+# make a simple plot the depicts what we are interested in
+disagreement_figure = ggplot(data, aes(x=divergence, y=disagreement)) + 
+  theme_classic(base_size = 15) + 
+  geom_point(alpha=1, size=3, color='cadetblue') + 
+  labs(y = 'Disagreement', x = 'Difference in beliefs') +
+  scale_fill_brewer(palette = 'Dark2') +
+  #facet_wrap(~ importance_binarized) +
+  ggtitle('Actual data')
+
+disagreement_figure
+
+```
+
+What we see here is a roughly positive trend in the data, with a decent amount of data appearing at the bounds of zero and one. Is there a way we could quantify both this positive relationship the capture how the data gathers at the bounds?
+
+# Simulation of data with a model menagerie
+
+## Linear Model
+
+It is common for psychologists to use frequentist models in their work. As of late, many are turning to Bayesian approaches. One large upside of using a Bayesian approach is that one can get an estimate of how certain the estimates within one's model are. Another upside, is that Bayesian methods provide a robust way conducting model comparison, which can offer a rigorous way of testing hypotheses about the form one one's data.
+
+::: panel-tabset
+### Model Specification
+
+For now, we don't go into the details about each of the regressors. What matters here is whether or not a linear model can capture the features of the data that we care about.
+
+```{r, message=FALSE, warning=FALSE, }
+# linear model
+output = capture.output(linear_model <- brm(
+  formula = disagreement ~ divergence + change + confidence + importance + belief_strength + same_side,
+  data = data,
+  chains = 6, iter = 3000, warmup = 2000,
+  cores = 6, seed = 1234, 
+  backend = "cmdstanr"
+))
+
+# we can add the `loo` criterion for model comparison later
+linear_model = add_criterion(linear_model, 'loo',"waic")
+```
+
+### Model Convergence
+
+We can see that our parameters are relatively smoothly Gaussian, and that the chains are intermingled like a "fuzzy caterpillar." This means that our software is converging, which is good.
+
+```{r}
+plot(linear_model)
+```
+
+### Results
+
+In case one is curious about the exact numerical estimates within the model. These are not of concern to us right now.
+
+```{r, warning=FALSE}
+kable(tidy(linear_model))
+```
+
+### Other Diagnostics
+
+Rhat should be exactly 1, which it is. Another indicator that our model has converged.
+
+```{r}
+# check the Rhat values
+kable(diagnostic_posterior(linear_model), digits=3)
+```
+
+### Posterior Predictive Check
+
+We will discuss this more below, but it looks like there is some kind of systematic error between the predictions that our model is making and the actual data. Why might this be?
+
+```{r}
+pp_check(linear_model)
+```
+:::
+
+After clicking through the tabs above, we can see that our model did indeed converge, and is giving us estimates for how each predictor influences disagreement judgements. But before we go through the work of interpreting these results, we ask ourselves, are we even using the right model? If we look at our posterior predictive checks above, we can see that something is amiss.
+
+We can get a more intuitive sense of what is going wrong by using the samples generated from our MCMC sampler to simulate data. This allows us to visualize our data how our model sees our data.
+
+### Data Simulation
+
+```{r}
+# generate a data frame of new predicted values from the data that we already have. Does it even do well?
+linear_predictions = predicted_draws(linear_model, newdata=data)
+
+# there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set
+linear_predictions_subset = linear_predictions[sample(nrow(linear_predictions),500),]
+
+# plot the predicted data
+# Plot disagreement vs Belief Divergence
+linear_predict_plot = ggplot(linear_predictions_subset, aes(x=divergence, y=.prediction)) + 
+  theme_classic(base_size = 15) + 
+  geom_point(alpha=1, size=3, color="pink") + 
+  labs(y = 'Disagreement', x = 'Belief Difference') +
+  scale_fill_brewer(palette = 'Dark2') +
+  ggtitle('Linear Simulation')
+```
+
+We can compare the simulated data to the actual data.
+
+```{r}
+plot_grid(disagreement_figure, linear_predict_plot)
+```
+
+We can immediately identify some issues, but we can also glean some insights. The first large issue is that our model makes predictions that are outside the actual possible range in our data set. That it, people can only give disagreement rating between 0 and 1, and our model predicts that they might respond more or less than those upper and lower bounds. Our model also appears unable to capture the clustering at the bounds that we see in our actual data.
+
+What this tells us, is that this clustering effect at the bounds of disagreement ratings is not just due to how our data is sampled. That is, this clustering at the bounds actually tells us something about the functional form people might be using to make judgement about disagreement. Let's try another class of model, to see if it is able to better capture the interesting trends in our data.
+
+## Beta Regression
+
+In order to improve our model's capability of representing the data and its actual bounds, we turn to beta regression. The beta distribution is incredibly flexible since is able to take on many different shapes with different amounts of variance. It is also bounded between zero and one. However, this boundedness comes with a large asterisk. The beta distribution is bounded between zero and one exclusive of zero and one. That means that we cannot accurately model data at the bounds without making some kind of modification to the data. And these might be exactly the points that we care about! Perhaps our research question asks how willing people are to completely agree or disagree.
+
+Since we are specifically interested in this behavior at the bounds of our data, we already know the beta distribution will be unable to actually model the phenomenon that we are interested in. Below, we slightly squeeze our data to allow us to run this model in the first place. We take a look at what kind of predictions this model makes, because we will build upon it to make improved models.
+
+::: panel-tabset
+### Model Specification
+
+```{r, message=FALSE, warning=FALSE, }
+
+# beta regression can't handle 0's or 1's
+fake_altered_data = data %>% 
+  mutate(disagreement = ifelse(disagreement == 0, 0.001, disagreement)) %>%
+  mutate(disagreement = ifelse(disagreement == 1, 0.999, disagreement))
+
+# beta regression, which can only run on fake data
+output = capture.output(beta_model <- brm(
+  bf(disagreement ~ divergence + change + confidence + importance + belief_strength + same_side,
+     phi ~ divergence + change + confidence + importance + belief_strength + same_side),
+  data = fake_altered_data,
+  family = Beta(),
+  chains = 6, iter = 3000, warmup = 2000,
+  cores = 6, seed = 1234, 
+  backend = "cmdstanr"
+))
+
+# we can add the `loo` criterion for model fitting later
+beta_model = add_criterion(beta_model, 'loo', 'waic')
+```
+
+### Model Convergence
+
+Looks like our model converges just fine.
+
+```{r}
+plot(beta_model)
+```
+
+### Results
+
+For those who might like to peek at this.
+
+```{r, warning=FALSE}
+kable(tidy(beta_model))
+```
+
+### Other Diagnostics
+
+Convergence confirmed.
+
+```{r}
+# check the Rhat values
+kable(diagnostic_posterior(beta_model), digits=3)
+```
+
+### Posterior Predictive Check
+
+We are generally getting the shape right here.
+
+```{r}
+pp_check(beta_model)
+```
+:::
+
+### Data Simulation
+
+```{r}
+# generate a data frame of new predicted values from the data that we already have. does it even do well?
+beta_predictions = predicted_draws(beta_model, newdata=data)
+
+# there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set
+beta_predictions_subset = beta_predictions[sample(nrow(beta_predictions),500),]
+
+# plot the predicted data
+# Plot disagreement vs Belief Divergence
+beta_predict_plot = ggplot(beta_predictions_subset, aes(x=divergence, y=.prediction)) + 
+  theme_classic(base_size = 15) + 
+  geom_point(alpha=1, size=3,  color="pink") + 
+  labs(y = 'Disagreement', x = 'Belief Difference') +
+  scale_fill_brewer(palette = 'Dark2') +
+  ggtitle('Beta Regression Simulation')
+
+```
+
+```{r, collapse=TRUE}
+plot_grid(disagreement_figure, beta_predict_plot)
+```
+
+Interestingly, a Beta Distribution is able to capture our data quite well. We see a degree of clustering at the upper and lower ends of the belief difference spectrum, though it does not hit the bounds as we well know. A consequence of this we can see is that our simulated data is noisier than our original data. The Beta Distribution alone is not able to understand that a phenomenon at the bounds might be different than one not at the bounds. Let's move to a model that takes these two different processes into account.
+
+## Zero-One Inflated Beta Regression
+
+Zero-One Inflated Beta Regression (ZOIB) is essentially a logistic regression and a beta regression meshed together. One parameter determines the likelihood that data will be generated by the logistic regression or the beta regression. The other parameters dictate the form of the Beta and Logistic regression separately. As a result of this, this model has many parameters. We do not show it here, but our model struggles to converge if we regress all of our predictors onto each parameter.
+
+This is the price we pay for a more complex model. We see how well this model might perform, and then will ask, is there a way of achieving all the properties that we want in a model without introducing so many new parameters?
+
+::: panel-tabset
+### Model Specification
+
+```{r, message=FALSE, warning=FALSE, }
+
+# zoib model
+output = capture.output(zoib_model <- brm(
+  bf(
+    disagreement ~ divergence + change + confidence + importance + belief_strength + same_side,
+    phi ~ divergence + change + confidence + importance + belief_strength + same_side,
+    zoi ~ 1,
+    coi ~ 1
+     ),
+  data = data,
+  family = zero_one_inflated_beta(),
+  chains = 6, iter = 3000, warmup = 2000,
+  cores = 6, seed = 1234, 
+  backend = "cmdstanr"
+))
+
+# we can add the `loo` criterion for model fitting later
+zoib_model = add_criterion(zoib_model, 'loo', 'waic')
+```
+
+### Model Convergence
+
+Despite having so many parameters, our model does indeed converge. This is likely because we have a relatively large data set of 500 samples.
+
+```{r}
+plot(zoib_model)
+```
+
+### Results
+
+```{r, warning=FALSE}
+summary(zoib_model)
+```
+
+### Other Diagnostics
+
+Checking for convergence and high effective sample size with a more complex model. ESS is well above 1000 for all parameters.
+
+```{r}
+# check the Rhat values
+kable(diagnostic_posterior(zoib_model), digits=3)
+```
+
+### Posterior Predictive Check
+
+We are gaining some predictive power on the right side here in comparison to Beta Regression. Let's simulate data to see why we might be achieving these gains.
+
+```{r}
+pp_check(zoib_model)
+```
+:::
+
+### Data Simulation
+
+```{r}
+# generate a data frame of new predicted values from the data that we already have. does it even do well?
+zoib_predictions = predicted_draws(zoib_model, newdata=data)
+
+# there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set
+zoib_predictions_subset = zoib_predictions[sample(nrow(zoib_predictions),500),]
+
+# plot the predicted data
+# Plot disagreement vs Belief Divergence
+zoib_predict_plot = ggplot(zoib_predictions_subset, aes(x=divergence, y=.prediction)) + 
+  theme_classic(base_size = 15) + 
+  geom_point(alpha=1, size=3,  color="pink") + 
+  labs(y = 'Disagreement', x = 'Belief Difference') +
+  scale_fill_brewer(palette = 'Dark2') +
+  ggtitle('ZOIB Simulation')
+
+```
+
+```{r, collapse=TRUE}
+plot_grid(disagreement_figure, zoib_predict_plot)
+```
+
+Admittedly this looks great. We are capturing the effects that we wanted at the bounds and elsewhere. Our models are converging, but as we noted, it is difficult for them to converge if all regressors are included. This is likely because our model is two models squashed together. Do we really need two models made into one to get the effect that we want?
+
+## Ordered Beta Regression
+
+We suggest that Ordered Beta Regression is able to solve the problems with ZOIB. It is able to capture phenomena at the bounds of data without the number of parameters in the model exploding. It does this by introducing dependency between the likeliness of a data point being at the bounds of the data and how likely data points are to appear at the bounds as the dependent variable gets larger. This is done through two parameters in addition to the ones in a beta distribution referred to as cut points.
+
+The analogy often used for understanding cut points is that in reality the phenomenon of interest is actually unbounded (like disagreement), but we cannot measure an unbounded phenomenon. We assume that if someone's preference is far above the bounds, they become increasingly likely to give a response at the upper bound (if it is above) and at the lower bound (if it is below).
+
+The cuts down on the number of parameters needed to model the same kind of data as a ZOIB model.
+
+::: panel-tabset
+### Model Specification
+
+```{r, message=FALSE, warning=FALSE}
+
+# apologies for the long output. attempts to hide were unsuccessful
+ordered_beta_reg = ordbetareg(
+  formula = disagreement ~ divergence + belief_strength + importance + confidence + change + same_side,
+  data = data,
+  chains = 6, iter = 3000, warmup = 2000,
+  cores = 6, seed = 1234, 
+)
+
+# we can add the `loo` criterion for model fitting later
+ordered_beta_reg = add_criterion(ordered_beta_reg, 'loo', 'waic')
+```
+
+### Model Convergence
+
+```{r}
+plot(ordered_beta_reg)
+```
+
+### Results
+
+```{r, warning=FALSE}
+summary(ordered_beta_reg)
+```
+
+### Other Diagnostics
+
+```{r}
+# check the Rhat values
+kable(diagnostic_posterior(ordered_beta_reg), digits=3)
+```
+
+### Posterior Predictive Check
+
+We nicely follow the predicted shape here.
+
+```{r}
+pp_check(ordered_beta_reg)
+```
+:::
+
+### Data Simulation
+
+```{r}
+# generate a data frame of new predicted values from the data that we already have. does it even do well?
+ord_beta_predictions = predicted_draws(ordered_beta_reg, newdata=data)
+
+# there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set
+ord_beta_predictions_subset = ord_beta_predictions[sample(nrow(ord_beta_predictions),500),]
+
+# plot the predicted data
+# Plot disagreement vs Belief Divergence
+ord_beta_predict_plot = ggplot(ord_beta_predictions_subset, aes(x=divergence, y=.prediction)) + 
+  theme_classic(base_size = 15) + 
+  geom_point(alpha=1, size=3,  color="pink") + 
+  labs(y = 'Disagreement', x = 'Belief Difference') +
+  scale_fill_brewer(palette = 'Dark2') +
+  ggtitle('Ordered Beta Simulation')
+
+```
+
+Recall that our actual data looks like this.
+
+```{r, collapse=TRUE}
+plot_grid(disagreement_figure, ord_beta_predict_plot)
+```
+
+Voila! A lower parameter method for capturing bounded data with phenomena at the bounds.
+
+# Formal model comparison
+
+Is decreasing the number of parameters really worth the trouble? And do our models actually fit our data better? The only way to actually answer this question is through formal model comparison.
+
+We use an information criterion known as Leave-One-Out Validation. The idea here is that (1) a model should predict the data that is available with a high probability (2) the model should predict data it has never seen with high probability. How do we know how well the model predicts data that is has never seen? We make an approximation by fitting the model to all of the data, save on point, and see how well the model predict that single point. We then repeat this for every data point in the set.
+
+Obviously, this can be quite computationally intensive. Some clever mathematicians came up with the LOO criterion which is a great, computationally efficient method for computing exactly what we need. The more negative the criterion, the better.
+
+```{r}
+loo_cmp = loo_compare(linear_model,beta_model,zoib_model, ordered_beta_reg)
+
+# create a data frame to store the LOO compare result
+df_loo_cmp <- data.frame(
+  Model = c("Linear", "Beta Reg","ZOIB","Ordered Beta Reg"),
+  LOOIC = c(loo_cmp[1,1], loo_cmp[2,1], loo_cmp[3,1], loo_cmp[4,1]),
+  SE = c(loo_cmp[1,2], loo_cmp[2,2], loo_cmp[3,2], loo_cmp[4,2])
+)
+
+# create the barplot
+ggplot(df_loo_cmp, aes(x = factor(Model, level=c('Linear','Beta Reg','ZOIB','Ordered Beta Reg')), y = LOOIC, fill = Model)) + 
+  geom_bar(stat = "identity") +
+  #geom_errorbar(aes(ymin = LOOIC - 1.96*SE, ymax = LOOIC + 1.96*SE), width = 0.2) +
+  labs(x = "", y = "LOOIC") +
+  theme_classic() +
+  theme(legend.position = "none") +
+  labs(title="Formal Model Comparison. More negative is better.")
+```
+
+We see here exactly what we expected. By comparison, our Ordinary Least Squares model performs quite terribly. We see a drastic improvement when we move to Beta Regression (which technically is not even fit on the same data set), and gradual improvement from there to ZOIB and again to Ordered Beta Regression.
+
+This is evidence that indeed, Ordered Beta Regression is worth the trouble of understanding and using, especially over linear models simply because of performance and predictive power. We also note that has a strict advantage over Beta Regression because it does not require modifying existing data in any way.
+
+For more information about Ordered Beta Regression, one can read the formal publication here: <https://www.cambridge.org/core/journals/political-analysis/article/ordered-beta-regression-a-parsimonious-wellfitting-model-for-continuous-data-with-lower-and-upper-bounds/89F4141DA16D4FC217809B5EB45EEE83>
+
+For more information about LOO, we recommend the following: <https://arxiv.org/abs/1507.04544>

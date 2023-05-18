@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="J. Branson Byers">
+<meta name="dcterms.date" content="2023-02-01">
+
+<title>byers_quarto_blog - Ordered Beta Regression and Other Models</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">byers_quarto_blog</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Ordered Beta Regression and Other Models</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">news</div>
+                <div class="quarto-category">code</div>
+                <div class="quarto-category">analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>J. Branson Byers </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 1, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In psychology research, it is common to come across data sets that are comprised of continuous responses on a finite scale. When it comes time to making claims about that data, scientists often default to Ordinary Least Squares Regression. Let’s take a dataset of precisely this kind of data: continuous, bounded responses from humans, and see how different models perform. We will note some flaws of these models, and demonstrate the benefits of some of the newer, more advanced models being used today. We make the case that for any kind of bounded, continuous data, Ordered Beta Regression should be used since it is a more general and sparse model than other good alternatives.</p>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The Data</h2>
+<p>The data that we examine here is an approximated version of an unpublished data set regarding disagreement. Let’s load in our data, and take a look at what we are working with.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read in the data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="at">file =</span> <span class="st">'ord_bet_reg_data.csv'</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># make a simple plot the depicts what we are interested in</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>disagreement_figure <span class="ot">=</span> <span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x=</span>divergence, <span class="at">y=</span>disagreement)) <span class="sc">+</span> </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">'cadetblue'</span>) <span class="sc">+</span> </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Disagreement'</span>, <span class="at">x =</span> <span class="st">'Difference in beliefs'</span>) <span class="sc">+</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">#facet_wrap(~ importance_binarized) +</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Actual data'</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>disagreement_figure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What we see here is a roughly positive trend in the data, with a decent amount of data appearing at the bounds of zero and one. Is there a way we could quantify both this positive relationship the capture how the data gathers at the bounds?</p>
+</section>
+</section>
+<section id="simulation-of-data-with-a-model-menagerie" class="level1">
+<h1>Simulation of data with a model menagerie</h1>
+<section id="linear-model" class="level2">
+<h2 class="anchored" data-anchor-id="linear-model">Linear Model</h2>
+<p>It is common for psychologists to use frequentist models in their work. As of late, many are turning to Bayesian approaches. One large upside of using a Bayesian approach is that one can get an estimate of how certain the estimates within one’s model are. Another upside, is that Bayesian methods provide a robust way conducting model comparison, which can offer a rigorous way of testing hypotheses about the form one one’s data.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Model Specification</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Model Convergence</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Other Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Posterior Predictive Check</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>For now, we don’t go into the details about each of the regressors. What matters here is whether or not a linear model can capture the features of the data that we care about.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># linear model</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>output <span class="ot">=</span> <span class="fu">capture.output</span>(linear_model <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> disagreement <span class="sc">~</span> divergence <span class="sc">+</span> change <span class="sc">+</span> confidence <span class="sc">+</span> importance <span class="sc">+</span> belief_strength <span class="sc">+</span> same_side,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">6</span>, <span class="at">iter =</span> <span class="dv">3000</span>, <span class="at">warmup =</span> <span class="dv">2000</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">6</span>, <span class="at">seed =</span> <span class="dv">1234</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">backend =</span> <span class="st">"cmdstanr"</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># we can add the `loo` criterion for model comparison later</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>linear_model <span class="ot">=</span> <span class="fu">add_criterion</span>(linear_model, <span class="st">'loo'</span>,<span class="st">"waic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>We can see that our parameters are relatively smoothly Gaussian, and that the chains are intermingled like a “fuzzy caterpillar.” This means that our software is converging, which is good.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(linear_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>In case one is curious about the exact numerical estimates within the model. These are not of concern to us right now.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">tidy</span>(linear_model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> effect </th>
+   <th style="text-align:left;"> component </th>
+   <th style="text-align:left;"> group </th>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> conf.low </th>
+   <th style="text-align:right;"> conf.high </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> (Intercept) </td>
+   <td style="text-align:right;"> 0.42 </td>
+   <td style="text-align:right;"> 0.05 </td>
+   <td style="text-align:right;"> 0.31 </td>
+   <td style="text-align:right;"> 0.52 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> divergence </td>
+   <td style="text-align:right;"> 0.72 </td>
+   <td style="text-align:right;"> 0.06 </td>
+   <td style="text-align:right;"> 0.61 </td>
+   <td style="text-align:right;"> 0.84 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> change </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 0.04 </td>
+   <td style="text-align:right;"> -0.08 </td>
+   <td style="text-align:right;"> 0.05 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> confidence </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 0.05 </td>
+   <td style="text-align:right;"> -0.10 </td>
+   <td style="text-align:right;"> 0.09 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> importance </td>
+   <td style="text-align:right;"> 0.02 </td>
+   <td style="text-align:right;"> 0.04 </td>
+   <td style="text-align:right;"> -0.05 </td>
+   <td style="text-align:right;"> 0.10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> belief_strength </td>
+   <td style="text-align:right;"> -0.24 </td>
+   <td style="text-align:right;"> 0.07 </td>
+   <td style="text-align:right;"> -0.38 </td>
+   <td style="text-align:right;"> -0.11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NA </td>
+   <td style="text-align:left;"> same_sideTRUE </td>
+   <td style="text-align:right;"> -0.15 </td>
+   <td style="text-align:right;"> 0.03 </td>
+   <td style="text-align:right;"> -0.21 </td>
+   <td style="text-align:right;"> -0.09 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ran_pars </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> Residual </td>
+   <td style="text-align:left;"> sd__Observation </td>
+   <td style="text-align:right;"> 0.21 </td>
+   <td style="text-align:right;"> 0.01 </td>
+   <td style="text-align:right;"> 0.20 </td>
+   <td style="text-align:right;"> 0.23 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p>Rhat should be exactly 1, which it is. Another indicator that our model has converged.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the Rhat values</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">diagnostic_posterior</span>(linear_model), <span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Parameter </th>
+   <th style="text-align:right;"> Rhat </th>
+   <th style="text-align:right;"> ESS </th>
+   <th style="text-align:right;"> MCSE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> b_belief_strength </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4924 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_change </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5911 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_confidence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4945 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_divergence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3807 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_importance </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5765 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4942 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_same_sideTRUE </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4200 </td>
+   <td style="text-align:right;"> 0.000 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<p>We will discuss this more below, but it looks like there is some kind of systematic error between the predictions that our model is making and the actual data. Why might this be?</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(linear_model)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Using 10 posterior draws for ppc type 'dens_overlay' by default.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>After clicking through the tabs above, we can see that our model did indeed converge, and is giving us estimates for how each predictor influences disagreement judgements. But before we go through the work of interpreting these results, we ask ourselves, are we even using the right model? If we look at our posterior predictive checks above, we can see that something is amiss.</p>
+<p>We can get a more intuitive sense of what is going wrong by using the samples generated from our MCMC sampler to simulate data. This allows us to visualize our data how our model sees our data.</p>
+<section id="data-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="data-simulation">Data Simulation</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a data frame of new predicted values from the data that we already have. Does it even do well?</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>linear_predictions <span class="ot">=</span> <span class="fu">predicted_draws</span>(linear_model, <span class="at">newdata=</span>data)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>linear_predictions_subset <span class="ot">=</span> linear_predictions[<span class="fu">sample</span>(<span class="fu">nrow</span>(linear_predictions),<span class="dv">500</span>),]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the predicted data</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot disagreement vs Belief Divergence</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>linear_predict_plot <span class="ot">=</span> <span class="fu">ggplot</span>(linear_predictions_subset, <span class="fu">aes</span>(<span class="at">x=</span>divergence, <span class="at">y=</span>.prediction)) <span class="sc">+</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>, <span class="at">color=</span><span class="st">"pink"</span>) <span class="sc">+</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Disagreement'</span>, <span class="at">x =</span> <span class="st">'Belief Difference'</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Linear Simulation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can compare the simulated data to the actual data.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(disagreement_figure, linear_predict_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can immediately identify some issues, but we can also glean some insights. The first large issue is that our model makes predictions that are outside the actual possible range in our data set. That it, people can only give disagreement rating between 0 and 1, and our model predicts that they might respond more or less than those upper and lower bounds. Our model also appears unable to capture the clustering at the bounds that we see in our actual data.</p>
+<p>What this tells us, is that this clustering effect at the bounds of disagreement ratings is not just due to how our data is sampled. That is, this clustering at the bounds actually tells us something about the functional form people might be using to make judgement about disagreement. Let’s try another class of model, to see if it is able to better capture the interesting trends in our data.</p>
+</section>
+</section>
+<section id="beta-regression" class="level2">
+<h2 class="anchored" data-anchor-id="beta-regression">Beta Regression</h2>
+<p>In order to improve our model’s capability of representing the data and its actual bounds, we turn to beta regression. The beta distribution is incredibly flexible since is able to take on many different shapes with different amounts of variance. It is also bounded between zero and one. However, this boundedness comes with a large asterisk. The beta distribution is bounded between zero and one exclusive of zero and one. That means that we cannot accurately model data at the bounds without making some kind of modification to the data. And these might be exactly the points that we care about! Perhaps our research question asks how willing people are to completely agree or disagree.</p>
+<p>Since we are specifically interested in this behavior at the bounds of our data, we already know the beta distribution will be unable to actually model the phenomenon that we are interested in. Below, we slightly squeeze our data to allow us to run this model in the first place. We take a look at what kind of predictions this model makes, because we will build upon it to make improved models.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Model Specification</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Model Convergence</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false">Results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false">Other Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">Posterior Predictive Check</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># beta regression can't handle 0's or 1's</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>fake_altered_data <span class="ot">=</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disagreement =</span> <span class="fu">ifelse</span>(disagreement <span class="sc">==</span> <span class="dv">0</span>, <span class="fl">0.001</span>, disagreement)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">disagreement =</span> <span class="fu">ifelse</span>(disagreement <span class="sc">==</span> <span class="dv">1</span>, <span class="fl">0.999</span>, disagreement))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># beta regression, which can only run on fake data</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>output <span class="ot">=</span> <span class="fu">capture.output</span>(beta_model <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bf</span>(disagreement <span class="sc">~</span> divergence <span class="sc">+</span> change <span class="sc">+</span> confidence <span class="sc">+</span> importance <span class="sc">+</span> belief_strength <span class="sc">+</span> same_side,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>     phi <span class="sc">~</span> divergence <span class="sc">+</span> change <span class="sc">+</span> confidence <span class="sc">+</span> importance <span class="sc">+</span> belief_strength <span class="sc">+</span> same_side),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> fake_altered_data,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">Beta</span>(),</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">6</span>, <span class="at">iter =</span> <span class="dv">3000</span>, <span class="at">warmup =</span> <span class="dv">2000</span>,</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">6</span>, <span class="at">seed =</span> <span class="dv">1234</span>, </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">backend =</span> <span class="st">"cmdstanr"</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="co"># we can add the `loo` criterion for model fitting later</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>beta_model <span class="ot">=</span> <span class="fu">add_criterion</span>(beta_model, <span class="st">'loo'</span>, <span class="st">'waic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>Looks like our model converges just fine.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(beta_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-3.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>For those who might like to peek at this.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">tidy</span>(beta_model))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> effect </th>
+   <th style="text-align:left;"> component </th>
+   <th style="text-align:left;"> group </th>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std.error </th>
+   <th style="text-align:right;"> conf.low </th>
+   <th style="text-align:right;"> conf.high </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.15 </td>
+   <td style="text-align:right;"> 0.29 </td>
+   <td style="text-align:right;"> -0.71 </td>
+   <td style="text-align:right;"> 0.43 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.14 </td>
+   <td style="text-align:right;"> 0.30 </td>
+   <td style="text-align:right;"> -0.75 </td>
+   <td style="text-align:right;"> 0.44 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> 3.05 </td>
+   <td style="text-align:right;"> 0.33 </td>
+   <td style="text-align:right;"> 2.41 </td>
+   <td style="text-align:right;"> 3.69 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.17 </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> -0.52 </td>
+   <td style="text-align:right;"> 0.19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.10 </td>
+   <td style="text-align:right;"> 0.26 </td>
+   <td style="text-align:right;"> -0.61 </td>
+   <td style="text-align:right;"> 0.42 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.01 </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> -0.36 </td>
+   <td style="text-align:right;"> 0.37 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.81 </td>
+   <td style="text-align:right;"> 0.36 </td>
+   <td style="text-align:right;"> -1.50 </td>
+   <td style="text-align:right;"> -0.10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.64 </td>
+   <td style="text-align:right;"> 0.15 </td>
+   <td style="text-align:right;"> -0.94 </td>
+   <td style="text-align:right;"> -0.34 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> 0.26 </td>
+   <td style="text-align:right;"> 0.35 </td>
+   <td style="text-align:right;"> -0.43 </td>
+   <td style="text-align:right;"> 0.94 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> 0.25 </td>
+   <td style="text-align:right;"> 0.20 </td>
+   <td style="text-align:right;"> -0.14 </td>
+   <td style="text-align:right;"> 0.63 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> 0.77 </td>
+   <td style="text-align:right;"> 0.26 </td>
+   <td style="text-align:right;"> 0.27 </td>
+   <td style="text-align:right;"> 1.29 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> -0.34 </td>
+   <td style="text-align:right;"> 0.18 </td>
+   <td style="text-align:right;"> -0.68 </td>
+   <td style="text-align:right;"> 0.01 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> 0.86 </td>
+   <td style="text-align:right;"> 0.37 </td>
+   <td style="text-align:right;"> 0.13 </td>
+   <td style="text-align:right;"> 1.60 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> fixed </td>
+   <td style="text-align:left;"> cond </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:left;"> NULL </td>
+   <td style="text-align:right;"> 0.16 </td>
+   <td style="text-align:right;"> 0.16 </td>
+   <td style="text-align:right;"> -0.14 </td>
+   <td style="text-align:right;"> 0.47 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p>Convergence confirmed.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the Rhat values</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">diagnostic_posterior</span>(beta_model), <span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Parameter </th>
+   <th style="text-align:right;"> Rhat </th>
+   <th style="text-align:right;"> ESS </th>
+   <th style="text-align:right;"> MCSE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> b_belief_strength </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7598 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_change </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7786 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_confidence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7475 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_divergence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5949 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_importance </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7937 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7070 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_belief_strength </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6784 </td>
+   <td style="text-align:right;"> 0.005 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_change </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7828 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_confidence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7515 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_divergence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6298 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_importance </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 8394 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7107 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_same_sideTRUE </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6659 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_same_sideTRUE </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6437 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<p>We are generally getting the shape right here.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(beta_model)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Using 10 posterior draws for ppc type 'dens_overlay' by default.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="data-simulation-1" class="level3">
+<h3 class="anchored" data-anchor-id="data-simulation-1">Data Simulation</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a data frame of new predicted values from the data that we already have. does it even do well?</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>beta_predictions <span class="ot">=</span> <span class="fu">predicted_draws</span>(beta_model, <span class="at">newdata=</span>data)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>beta_predictions_subset <span class="ot">=</span> beta_predictions[<span class="fu">sample</span>(<span class="fu">nrow</span>(beta_predictions),<span class="dv">500</span>),]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the predicted data</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot disagreement vs Belief Divergence</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>beta_predict_plot <span class="ot">=</span> <span class="fu">ggplot</span>(beta_predictions_subset, <span class="fu">aes</span>(<span class="at">x=</span>divergence, <span class="at">y=</span>.prediction)) <span class="sc">+</span> </span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>,  <span class="at">color=</span><span class="st">"pink"</span>) <span class="sc">+</span> </span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Disagreement'</span>, <span class="at">x =</span> <span class="st">'Belief Difference'</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Beta Regression Simulation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(disagreement_figure, beta_predict_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Interestingly, a Beta Distribution is able to capture our data quite well. We see a degree of clustering at the upper and lower ends of the belief difference spectrum, though it does not hit the bounds as we well know. A consequence of this we can see is that our simulated data is noisier than our original data. The Beta Distribution alone is not able to understand that a phenomenon at the bounds might be different than one not at the bounds. Let’s move to a model that takes these two different processes into account.</p>
+</section>
+</section>
+<section id="zero-one-inflated-beta-regression" class="level2">
+<h2 class="anchored" data-anchor-id="zero-one-inflated-beta-regression">Zero-One Inflated Beta Regression</h2>
+<p>Zero-One Inflated Beta Regression (ZOIB) is essentially a logistic regression and a beta regression meshed together. One parameter determines the likelihood that data will be generated by the logistic regression or the beta regression. The other parameters dictate the form of the Beta and Logistic regression separately. As a result of this, this model has many parameters. We do not show it here, but our model struggles to converge if we regress all of our predictors onto each parameter.</p>
+<p>This is the price we pay for a more complex model. We see how well this model might perform, and then will ask, is there a way of achieving all the properties that we want in a model without introducing so many new parameters?</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Model Specification</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Model Convergence</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false">Results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false">Other Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-5" role="tab" aria-controls="tabset-3-5" aria-selected="false">Posterior Predictive Check</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># zoib model</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>output <span class="ot">=</span> <span class="fu">capture.output</span>(zoib_model <span class="ot">&lt;-</span> <span class="fu">brm</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bf</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    disagreement <span class="sc">~</span> divergence <span class="sc">+</span> change <span class="sc">+</span> confidence <span class="sc">+</span> importance <span class="sc">+</span> belief_strength <span class="sc">+</span> same_side,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    phi <span class="sc">~</span> divergence <span class="sc">+</span> change <span class="sc">+</span> confidence <span class="sc">+</span> importance <span class="sc">+</span> belief_strength <span class="sc">+</span> same_side,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    zoi <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    coi <span class="sc">~</span> <span class="dv">1</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>     ),</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">family =</span> <span class="fu">zero_one_inflated_beta</span>(),</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">6</span>, <span class="at">iter =</span> <span class="dv">3000</span>, <span class="at">warmup =</span> <span class="dv">2000</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">6</span>, <span class="at">seed =</span> <span class="dv">1234</span>, </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">backend =</span> <span class="st">"cmdstanr"</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># we can add the `loo` criterion for model fitting later</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>zoib_model <span class="ot">=</span> <span class="fu">add_criterion</span>(zoib_model, <span class="st">'loo'</span>, <span class="st">'waic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>Despite having so many parameters, our model does indeed converge. This is likely because we have a relatively large data set of 500 samples.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(zoib_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-3.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-17-4.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(zoib_model)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  Family: zero_one_inflated_beta </span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Links: mu = logit; phi = log; zoi = logit; coi = logit </span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Formula: disagreement ~ divergence + change + confidence + importance + belief_strength + same_side </span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="do">##          phi ~ divergence + change + confidence + importance + belief_strength + same_side</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">##          zoi ~ 1</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">##          coi ~ 1</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    Data: data (Number of observations: 500) </span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   Draws: 6 chains, each with iter = 3000; warmup = 2000; thin = 1;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="do">##          total post-warmup draws = 6000</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Population-Level Effects: </span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="do">##                     Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="do">## Intercept              -0.58      0.23    -1.03    -0.14 1.00     7328     5145</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_Intercept           1.84      0.36     1.15     2.56 1.00     6629     5038</span></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">## zoi_Intercept          -1.79      0.13    -2.05    -1.55 1.00     8754     4624</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="do">## coi_Intercept           1.14      0.27     0.63     1.68 1.00     8592     4224</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="do">## divergence              3.24      0.27     2.71     3.79 1.00     6651     4807</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="do">## change                 -0.10      0.15    -0.40     0.21 1.00     7529     4979</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="do">## confidence             -0.13      0.22    -0.57     0.29 1.00     7027     4715</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a><span class="do">## importance              0.40      0.17     0.06     0.73 1.00     7141     4721</span></span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a><span class="do">## belief_strength        -1.07      0.30    -1.66    -0.50 1.00     7073     4826</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="do">## same_sideTRUE          -0.53      0.12    -0.77    -0.29 1.00     6547     4844</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_divergence         -0.31      0.39    -1.06     0.46 1.00     6187     4773</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_change              0.05      0.23    -0.41     0.51 1.00     7651     4788</span></span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_confidence         -0.24      0.33    -0.89     0.40 1.00     6666     4717</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_importance          0.04      0.23    -0.42     0.49 1.00     6724     4796</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_belief_strength     0.59      0.46    -0.31     1.47 1.00     7428     4799</span></span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## phi_same_sideTRUE      -0.20      0.18    -0.55     0.16 1.00     6405     4765</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="do">## Draws were sampled using sample(hmc). For each parameter, Bulk_ESS</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a><span class="do">## and Tail_ESS are effective sample size measures, and Rhat is the potential</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a><span class="do">## scale reduction factor on split chains (at convergence, Rhat = 1).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
+<p>Checking for convergence and high effective sample size with a more complex model. ESS is well above 1000 for all parameters.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the Rhat values</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">diagnostic_posterior</span>(zoib_model), <span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Parameter </th>
+   <th style="text-align:right;"> Rhat </th>
+   <th style="text-align:right;"> ESS </th>
+   <th style="text-align:right;"> MCSE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> b_belief_strength </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7037 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_change </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7488 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_coi_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 8480 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_confidence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7003 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_divergence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6638 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_importance </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7110 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7320 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_belief_strength </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7373 </td>
+   <td style="text-align:right;"> 0.005 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_change </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7528 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_confidence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6591 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_divergence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6146 </td>
+   <td style="text-align:right;"> 0.005 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_importance </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6718 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6587 </td>
+   <td style="text-align:right;"> 0.004 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_phi_same_sideTRUE </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6387 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_same_sideTRUE </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6469 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_zoi_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 8671 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tabset-3-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-5-tab">
+<p>We are gaining some predictive power on the right side here in comparison to Beta Regression. Let’s simulate data to see why we might be achieving these gains.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(zoib_model)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Using 10 posterior draws for ppc type 'dens_overlay' by default.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="data-simulation-2" class="level3">
+<h3 class="anchored" data-anchor-id="data-simulation-2">Data Simulation</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a data frame of new predicted values from the data that we already have. does it even do well?</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>zoib_predictions <span class="ot">=</span> <span class="fu">predicted_draws</span>(zoib_model, <span class="at">newdata=</span>data)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>zoib_predictions_subset <span class="ot">=</span> zoib_predictions[<span class="fu">sample</span>(<span class="fu">nrow</span>(zoib_predictions),<span class="dv">500</span>),]</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the predicted data</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot disagreement vs Belief Divergence</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>zoib_predict_plot <span class="ot">=</span> <span class="fu">ggplot</span>(zoib_predictions_subset, <span class="fu">aes</span>(<span class="at">x=</span>divergence, <span class="at">y=</span>.prediction)) <span class="sc">+</span> </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>,  <span class="at">color=</span><span class="st">"pink"</span>) <span class="sc">+</span> </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Disagreement'</span>, <span class="at">x =</span> <span class="st">'Belief Difference'</span>) <span class="sc">+</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'ZOIB Simulation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(disagreement_figure, zoib_predict_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Admittedly this looks great. We are capturing the effects that we wanted at the bounds and elsewhere. Our models are converging, but as we noted, it is difficult for them to converge if all regressors are included. This is likely because our model is two models squashed together. Do we really need two models made into one to get the effect that we want?</p>
+</section>
+</section>
+<section id="ordered-beta-regression" class="level2">
+<h2 class="anchored" data-anchor-id="ordered-beta-regression">Ordered Beta Regression</h2>
+<p>We suggest that Ordered Beta Regression is able to solve the problems with ZOIB. It is able to capture phenomena at the bounds of data without the number of parameters in the model exploding. It does this by introducing dependency between the likeliness of a data point being at the bounds of the data and how likely data points are to appear at the bounds as the dependent variable gets larger. This is done through two parameters in addition to the ones in a beta distribution referred to as cut points.</p>
+<p>The analogy often used for understanding cut points is that in reality the phenomenon of interest is actually unbounded (like disagreement), but we cannot measure an unbounded phenomenon. We assume that if someone’s preference is far above the bounds, they become increasingly likely to give a response at the upper bound (if it is above) and at the lower bound (if it is below).</p>
+<p>The cuts down on the number of parameters needed to model the same kind of data as a ZOIB model.</p>
+<div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Model Specification</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Model Convergence</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Results</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">Other Diagnostics</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-5" role="tab" aria-controls="tabset-4-5" aria-selected="false">Posterior Predictive Check</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># apologies for the long output. attempts to hide were unsuccessful</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>ordered_beta_reg <span class="ot">=</span> <span class="fu">ordbetareg</span>(</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> disagreement <span class="sc">~</span> divergence <span class="sc">+</span> belief_strength <span class="sc">+</span> importance <span class="sc">+</span> confidence <span class="sc">+</span> change <span class="sc">+</span> same_side,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> data,</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">chains =</span> <span class="dv">6</span>, <span class="at">iter =</span> <span class="dv">3000</span>, <span class="at">warmup =</span> <span class="dv">2000</span>,</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">cores =</span> <span class="dv">6</span>, <span class="at">seed =</span> <span class="dv">1234</span>, </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Running /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB foo.c</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="do">## clang -mmacosx-version-min=10.13 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG   -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/Rcpp/include/"  -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/"  -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/unsupported"  -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/BH/include" -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/StanHeaders/include/src/"  -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/StanHeaders/include/"  -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppParallel/include/"  -I"/Library/Frameworks/R.framework/Versions/4.2/Resources/library/rstan/include" -DEIGEN_NO_DEBUG  -DBOOST_DISABLE_ASSERTS  -DBOOST_PENDING_INTEGER_LOG2_HPP  -DSTAN_THREADS  -DBOOST_NO_AUTO_PTR  -include '/Library/Frameworks/R.framework/Versions/4.2/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp'  -D_REENTRANT -DRCPP_PARALLEL_USE_TBB=1   -I/usr/local/include   -fPIC  -Wall -g -O2  -c foo.c -o foo.o</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from &lt;built-in&gt;:1:</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from /Library/Frameworks/R.framework/Versions/4.2/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13:</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from /Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/Eigen/Dense:1:</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from /Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/Eigen/Core:88:</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="do">## /Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:1: error: unknown type name 'namespace'</span></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="do">## namespace Eigen {</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a><span class="do">## ^</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a><span class="do">## /Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/Eigen/src/Core/util/Macros.h:628:16: error: expected ';' after top level declarator</span></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a><span class="do">## namespace Eigen {</span></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="do">##                ^</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a><span class="do">##                ;</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from &lt;built-in&gt;:1:</span></span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from /Library/Frameworks/R.framework/Versions/4.2/Resources/library/StanHeaders/include/stan/math/prim/mat/fun/Eigen.hpp:13:</span></span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a><span class="do">## In file included from /Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/Eigen/Dense:1:</span></span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a><span class="do">## /Library/Frameworks/R.framework/Versions/4.2/Resources/library/RcppEigen/include/Eigen/Core:96:10: fatal error: 'complex' file not found</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a><span class="do">## #include &lt;complex&gt;</span></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="do">##          ^~~~~~~~~</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 errors generated.</span></span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a><span class="do">## make: *** [foo.o] Error 1</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a><span class="co"># we can add the `loo` criterion for model fitting later</span></span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>ordered_beta_reg <span class="ot">=</span> <span class="fu">add_criterion</span>(ordered_beta_reg, <span class="st">'loo'</span>, <span class="st">'waic'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ordered_beta_reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-24-2.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ordered_beta_reg)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  Family: ord_beta_reg </span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Links: mu = identity; phi = identity; cutzero = identity; cutone = identity </span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Formula: disagreement ~ divergence + belief_strength + importance + confidence + change + same_side </span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    Data: data (Number of observations: 500) </span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   Draws: 6 chains, each with iter = 3000; warmup = 2000; thin = 1;</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="do">##          total post-warmup draws = 6000</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Population-Level Effects: </span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="do">##                 Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Intercept          -0.50      0.21    -0.92    -0.07 1.00     6319     4412</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="do">## divergence          3.20      0.25     2.72     3.70 1.00     5671     4328</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="do">## belief_strength    -1.02      0.27    -1.55    -0.48 1.00     7180     4966</span></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="do">## importance          0.34      0.15     0.03     0.64 1.00     7563     4466</span></span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a><span class="do">## confidence         -0.18      0.20    -0.57     0.23 1.00     6841     4138</span></span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a><span class="do">## change             -0.15      0.14    -0.43     0.13 1.00     6908     3934</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a><span class="do">## same_sideTRUE      -0.53      0.11    -0.75    -0.31 1.00     6451     4430</span></span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Family Specific Parameters: </span></span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a><span class="do">##         Estimate Est.Error l-95% CI u-95% CI Rhat Bulk_ESS Tail_ESS</span></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="do">## phi         5.33      0.35     4.67     6.04 1.00     7875     4671</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a><span class="do">## cutzero    -3.59      0.25    -4.09    -3.11 1.00     6054     4119</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a><span class="do">## cutone      1.83      0.05     1.73     1.92 1.00     6042     4542</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Draws were sampled using sampling(NUTS). For each parameter, Bulk_ESS</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a><span class="do">## and Tail_ESS are effective sample size measures, and Rhat is the potential</span></span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a><span class="do">## scale reduction factor on split chains (at convergence, Rhat = 1).</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check the Rhat values</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(<span class="fu">diagnostic_posterior</span>(ordered_beta_reg), <span class="at">digits=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Parameter </th>
+   <th style="text-align:right;"> Rhat </th>
+   <th style="text-align:right;"> ESS </th>
+   <th style="text-align:right;"> MCSE </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> b_belief_strength </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7123 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_change </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6785 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_confidence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6883 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_divergence </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5616 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_importance </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 7495 </td>
+   <td style="text-align:right;"> 0.002 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_Intercept </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6282 </td>
+   <td style="text-align:right;"> 0.003 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> b_same_sideTRUE </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 6443 </td>
+   <td style="text-align:right;"> 0.001 </td>
+  </tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tabset-4-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-5-tab">
+<p>We nicely follow the predicted shape here.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pp_check</span>(ordered_beta_reg)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Using 10 posterior draws for ppc type 'dens_overlay' by default.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section id="data-simulation-3" class="level3">
+<h3 class="anchored" data-anchor-id="data-simulation-3">Data Simulation</h3>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># generate a data frame of new predicted values from the data that we already have. does it even do well?</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>ord_beta_predictions <span class="ot">=</span> <span class="fu">predicted_draws</span>(ordered_beta_reg, <span class="at">newdata=</span>data)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># there are going to be an enormous number of these predictions, so let's thin them out randomly the idea is that we should still get proportional results to the full set</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>ord_beta_predictions_subset <span class="ot">=</span> ord_beta_predictions[<span class="fu">sample</span>(<span class="fu">nrow</span>(ord_beta_predictions),<span class="dv">500</span>),]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># plot the predicted data</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot disagreement vs Belief Divergence</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>ord_beta_predict_plot <span class="ot">=</span> <span class="fu">ggplot</span>(ord_beta_predictions_subset, <span class="fu">aes</span>(<span class="at">x=</span>divergence, <span class="at">y=</span>.prediction)) <span class="sc">+</span> </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">15</span>) <span class="sc">+</span> </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="dv">1</span>, <span class="at">size=</span><span class="dv">3</span>,  <span class="at">color=</span><span class="st">"pink"</span>) <span class="sc">+</span> </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">'Disagreement'</span>, <span class="at">x =</span> <span class="st">'Belief Difference'</span>) <span class="sc">+</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">'Dark2'</span>) <span class="sc">+</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">'Ordered Beta Simulation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Recall that our actual data looks like this.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_grid</span>(disagreement_figure, ord_beta_predict_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Voila! A lower parameter method for capturing bounded data with phenomena at the bounds.</p>
+</section>
+</section>
+</section>
+<section id="formal-model-comparison" class="level1">
+<h1>Formal model comparison</h1>
+<p>Is decreasing the number of parameters really worth the trouble? And do our models actually fit our data better? The only way to actually answer this question is through formal model comparison.</p>
+<p>We use an information criterion known as Leave-One-Out Validation. The idea here is that (1) a model should predict the data that is available with a high probability (2) the model should predict data it has never seen with high probability. How do we know how well the model predicts data that is has never seen? We make an approximation by fitting the model to all of the data, save on point, and see how well the model predict that single point. We then repeat this for every data point in the set.</p>
+<p>Obviously, this can be quite computationally intensive. Some clever mathematicians came up with the LOO criterion which is a great, computationally efficient method for computing exactly what we need. The more negative the criterion, the better.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>loo_cmp <span class="ot">=</span> <span class="fu">loo_compare</span>(linear_model,beta_model,zoib_model, ordered_beta_reg)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Warning: Not all models have the same y variable. ('yhash' attributes do not match)</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data frame to store the LOO compare result</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>df_loo_cmp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Model =</span> <span class="fu">c</span>(<span class="st">"Linear"</span>, <span class="st">"Beta Reg"</span>,<span class="st">"ZOIB"</span>,<span class="st">"Ordered Beta Reg"</span>),</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">LOOIC =</span> <span class="fu">c</span>(loo_cmp[<span class="dv">1</span>,<span class="dv">1</span>], loo_cmp[<span class="dv">2</span>,<span class="dv">1</span>], loo_cmp[<span class="dv">3</span>,<span class="dv">1</span>], loo_cmp[<span class="dv">4</span>,<span class="dv">1</span>]),</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">SE =</span> <span class="fu">c</span>(loo_cmp[<span class="dv">1</span>,<span class="dv">2</span>], loo_cmp[<span class="dv">2</span>,<span class="dv">2</span>], loo_cmp[<span class="dv">3</span>,<span class="dv">2</span>], loo_cmp[<span class="dv">4</span>,<span class="dv">2</span>])</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># create the barplot</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_loo_cmp, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(Model, <span class="at">level=</span><span class="fu">c</span>(<span class="st">'Linear'</span>,<span class="st">'Beta Reg'</span>,<span class="st">'ZOIB'</span>,<span class="st">'Ordered Beta Reg'</span>)), <span class="at">y =</span> LOOIC, <span class="at">fill =</span> Model)) <span class="sc">+</span> </span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_errorbar(aes(ymin = LOOIC - 1.96*SE, ymax = LOOIC + 1.96*SE), width = 0.2) +</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> <span class="st">"LOOIC"</span>) <span class="sc">+</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Formal Model Comparison. More negative is better."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-30-1.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see here exactly what we expected. By comparison, our Ordinary Least Squares model performs quite terribly. We see a drastic improvement when we move to Beta Regression (which technically is not even fit on the same data set), and gradual improvement from there to ZOIB and again to Ordered Beta Regression.</p>
+<p>This is evidence that indeed, Ordered Beta Regression is worth the trouble of understanding and using, especially over linear models simply because of performance and predictive power. We also note that has a strict advantage over Beta Regression because it does not require modifying existing data in any way.</p>
+<p>For more information about Ordered Beta Regression, one can read the formal publication here: <a href="https://www.cambridge.org/core/journals/political-analysis/article/ordered-beta-regression-a-parsimonious-wellfitting-model-for-continuous-data-with-lower-and-upper-bounds/89F4141DA16D4FC217809B5EB45EEE83" class="uri">https://www.cambridge.org/core/journals/political-analysis/article/ordered-beta-regression-a-parsimonious-wellfitting-model-for-continuous-data-with-lower-and-upper-bounds/89F4141DA16D4FC217809B5EB45EEE83</a></p>
+<p>For more information about LOO, we recommend the following: <a href="https://arxiv.org/abs/1507.04544" class="uri">https://arxiv.org/abs/1507.04544</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
